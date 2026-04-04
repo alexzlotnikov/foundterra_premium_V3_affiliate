@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import Footer from "@/components/Footer";
+import StartupDealsPromo from "@/components/StartupDealsPromo";
 
 const ImageCarousel = lazy(() => import("@/components/ImageCarousel"));
 const About = lazy(() => import("@/components/About"));
@@ -47,6 +48,7 @@ const Index = () => {
         <Suspense fallback={<div className="h-[220px]" aria-hidden="true" />}>
           <ImageCarousel />
         </Suspense>
+        <StartupDealsPromo />
         <div className="pb-12">
           <Problem />
         </div>
