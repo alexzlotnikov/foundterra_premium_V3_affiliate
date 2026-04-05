@@ -17,7 +17,7 @@ export function DealCard({ deal, isReplacement, replacesName }: { deal: Deal; is
         <DealBadge text={deal.category === 'credits' ? 'Cloud Credit' : deal.category === 'partner' ? 'Partner Deal' : 'Alternative'} category={deal.category} />
       </div>
       <p className="mb-4 text-sm text-[#b6b6d4]">{deal.description}</p>
-      <DealOfferButton text={deal.badge} link={deal.link} />
+      <DealOfferButton text={deal.category === 'credits' ? `Up to ${deal.badge}` : deal.badge} link={deal.link} />
     </div>
   );
 }
