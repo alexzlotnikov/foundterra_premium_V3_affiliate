@@ -24,6 +24,7 @@ import InvestorReady from "./pages/InvestorReady";
 import PaidConsultation from "./pages/PaidConsultation";
 import MarketSize from "./pages/MarketSize";
 import PitchReview from "./pages/PitchReview";
+import StartupDeals from "./pages/StartupDeals";
 import CookieConsent from "./components/CookieConsent";
 import ErrorBoundary from "./components/ErrorBoundary";
 
@@ -65,6 +66,7 @@ const AppContent = () => {
           <Route path="/market-size" element={<MarketSize />} />
           <Route path="/he/market-size" element={<MarketSize />} />
           <Route path="/pitch-review" element={<PitchReview />} />
+          <Route path="/startup-deals" element={<StartupDeals />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
