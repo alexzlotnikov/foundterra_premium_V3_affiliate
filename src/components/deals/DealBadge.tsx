@@ -10,5 +10,18 @@ const colorMap: Record<DealCategory | 'expired', string> = {
 
 export function DealBadge({ text, category, expired = false }: { text: string; category: DealCategory; expired?: boolean }) {
   const klass = expired ? colorMap.expired : colorMap[category];
-  return <span className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${klass}`}>{text}</span>;
+  return <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${klass}`}>{text}</span>;
+}
+
+export function DealOfferButton({ text, link }: { text: string; link: string }) {
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-[#16dba3] to-[#0fb880] px-4 py-2 text-sm font-bold text-[#052517] transition hover:brightness-110"
+    >
+      {text}
+    </a>
+  );
 }

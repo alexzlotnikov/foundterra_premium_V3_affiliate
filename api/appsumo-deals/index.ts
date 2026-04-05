@@ -24,8 +24,8 @@ function extractBadge(name: string, description: string): string {
 }
 
 export default async function handler(_req: VercelRequest, res: VercelResponse) {
-  const ACCOUNT_SID = process.env.IMPACT_API_ACCOUNT_SID;
-  const AUTH_TOKEN = process.env.IMPACT_API_AUTH_TOKEN;
+  const ACCOUNT_SID = process.env.IMPACT_API_ACCOUNT_SID || process.env.ACCOUNT_SID;
+  const AUTH_TOKEN = process.env.IMPACT_API_AUTH_TOKEN || process.env.AUTH_TOKEN;
 
   if (!ACCOUNT_SID || !AUTH_TOKEN) {
     return res.status(200).json({ statusMap: {}, replacementCandidates: [], fallback: true, updatedAt: new Date().toISOString() });

@@ -1,11 +1,10 @@
-import { ArrowUpRight } from 'lucide-react';
 import { Deal } from '@/lib/deals-data';
 import { DealLogo } from './DealLogo';
-import { DealBadge } from './DealBadge';
+import { DealBadge, DealOfferButton } from './DealBadge';
 
 export function DealCard({ deal, isReplacement, replacesName }: { deal: Deal; isReplacement?: boolean; replacesName?: string }) {
   return (
-    <a href={deal.link} target="_blank" rel="noreferrer" className="group block rounded-xl border border-[#252535] bg-[#111118] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#4A4A7A] hover:shadow-[0_8px_32px_rgba(99,102,241,0.15)]">
+    <div className="group rounded-xl border border-[#252535] bg-[#111118] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#4A4A7A] hover:shadow-[0_8px_32px_rgba(99,102,241,0.15)]">
       {isReplacement && <div className="mb-3 text-xs text-[#F4C430]">🔄 New Pick — replaces {replacesName}</div>}
       <div className="mb-4 flex items-center gap-3">
         <DealLogo domain={deal.domain} name={deal.company} />
@@ -14,9 +13,11 @@ export function DealCard({ deal, isReplacement, replacesName }: { deal: Deal; is
           {deal.alternativeTo && <p className="text-xs text-[#9a9ab8]">Alt to {deal.alternativeTo}</p>}
         </div>
       </div>
-      <div className="mb-3"><DealBadge text={deal.badge} category={deal.category} /></div>
+      <div className="mb-3">
+        <DealBadge text={deal.category === 'credits' ? 'Cloud Credit' : deal.category === 'partner' ? 'Partner Deal' : 'Alternative'} category={deal.category} />
+      </div>
       <p className="mb-4 text-sm text-[#b6b6d4]">{deal.description}</p>
-      <div className="inline-flex items-center gap-1 text-sm font-medium text-[#aab0ff]">Open Deal <ArrowUpRight size={14} /></div>
-    </a>
+      <DealOfferButton text={deal.badge} link={deal.link} />
+    </div>
   );
 }

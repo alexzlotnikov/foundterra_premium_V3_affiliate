@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+
+const logoProviders = (domain: string, size: number) => [
+  `https://logo.clearbit.com/${domain}?size=${size * 2}`,
+  `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+  `https://www.google.com/s2/favicons?domain=${domain}&sz=${Math.max(32, size * 2)}`,
+];
 
 export function DealLogo({ domain, name, size = 40 }: { domain: string; name: string; size?: number }) {
-  const [error, setError] = useState(false);
+  const [providerIndex, setProviderIndex] = useState(0);
 
-  if (error || !domain) {
+  const sources = useMemo(() => (domain ? logoProviders(domain, size) : []), [domain, size]);
+
+  if (!domain || providerIndex >= sources.length) {
     return (
       <div
-        className="rounded-xl flex items-center justify-center font-bold text-white shrink-0"
+        className="flex shrink-0 items-center justify-center rounded-xl font-bold text-white"
         style={{ width: size, height: size, background: stringToColor(name), fontSize: size * 0.38 }}
       >
         {name.charAt(0).toUpperCase()}
@@ -16,13 +24,14 @@ export function DealLogo({ domain, name, size = 40 }: { domain: string; name: st
 
   return (
     <img
-      src={`https://logo.clearbit.com/${domain}?size=${size * 2}`}
+      src={sources[providerIndex]}
       alt={`${name} logo`}
       width={size}
       height={size}
-      className="rounded-xl object-contain bg-white p-1 shrink-0"
-      onError={() => setError(true)}
+      className="shrink-0 rounded-xl bg-white p-1 object-contain"
+      onError={() => setProviderIndex((prev) => prev + 1)}
       loading="lazy"
+      referrerPolicy="no-referrer"
     />
   );
 }
