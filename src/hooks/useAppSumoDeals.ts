@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export interface AppSumoData {
-  statusMap: Record<string, { isActive: boolean; liveLink: string | null }>;
+  statusMap: Record<string, { isActive: boolean; liveLink: string | null; liveBadge: string | null }>;
   replacementCandidates: ReplacementDeal[];
   updatedAt: string;
   fallback?: boolean;
@@ -33,8 +33,11 @@ export function useAppSumoDeals() {
   const getLiveLink = (dealId: string, fallback: string) =>
     data?.statusMap[dealId]?.liveLink ?? fallback;
 
+  const getLiveBadge = (dealId: string, fallback: string) =>
+    data?.statusMap[dealId]?.liveBadge ?? fallback;
+
   const getReplacement = (slotIndex: number): ReplacementDeal | null =>
     data?.replacementCandidates[slotIndex] ?? null;
 
-  return { data, loading, isDealActive, getLiveLink, getReplacement };
+  return { data, loading, isDealActive, getLiveLink, getLiveBadge, getReplacement };
 }

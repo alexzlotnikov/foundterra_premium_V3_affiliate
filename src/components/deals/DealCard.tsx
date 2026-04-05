@@ -4,9 +4,9 @@ import { DealBadge, DealOfferButton } from './DealBadge';
 
 export function DealCard({ deal, isReplacement, replacesName }: { deal: Deal; isReplacement?: boolean; replacesName?: string }) {
   return (
-    <div className="group rounded-xl border border-[#252535] bg-[#111118] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#4A4A7A] hover:shadow-[0_8px_32px_rgba(99,102,241,0.15)]">
+    <div className="group rounded-xl border border-[#252535] bg-[#111118] p-5 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#4A4A7A] hover:shadow-[0_8px_32px_rgba(99,102,241,0.15)]">
       {isReplacement && <div className="mb-3 text-xs text-[#F4C430]">🔄 New Pick — replaces {replacesName}</div>}
-      <div className="mb-4 flex items-center gap-3">
+      <div className="mb-4 flex items-center justify-center gap-3">
         <DealLogo domain={deal.domain} name={deal.company} />
         <div>
           <h3 className="text-lg font-semibold text-[#EEEEF8]">{deal.company}</h3>

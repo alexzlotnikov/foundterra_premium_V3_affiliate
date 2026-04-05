@@ -1,10 +1,35 @@
 import { useEffect, useMemo, useState } from 'react';
 
+const domainOverrides: Record<string, string[]> = {
+  'brevo.com': [
+    'https://logo.clearbit.com/sendinblue.com',
+    'https://www.google.com/s2/favicons?domain=brevo.com&sz=128',
+  ],
+  'docsend.com': [
+    'https://logo.clearbit.com/dropbox.com',
+    'https://www.google.com/s2/favicons?domain=docsend.com&sz=128',
+  ],
+  'apollo.io': [
+    'https://logo.clearbit.com/apollo.io',
+    'https://www.google.com/s2/favicons?domain=apollo.io&sz=128',
+  ],
+  'sendpilot.io': [
+    'https://www.google.com/s2/favicons?domain=sendpilot.io&sz=128',
+    'https://icons.duckduckgo.com/ip3/sendpilot.io.ico',
+  ],
+  'breezedoc.com': [
+    'https://www.google.com/s2/favicons?domain=breezedoc.com&sz=128',
+    'https://icons.duckduckgo.com/ip3/breezedoc.com.ico',
+  ],
+};
+
 const providerList = (domain: string, size: number) => [
+  ...(domainOverrides[domain] ?? []),
   `https://logo.clearbit.com/${domain}?size=${size * 2}`,
   `https://icons.duckduckgo.com/ip3/${domain}.ico`,
   `https://www.google.com/s2/favicons?domain=${domain}&sz=${Math.max(32, size * 2)}`,
   `https://unavatar.io/${domain}`,
+  '/favicon.ico',
 ];
 
 const cacheKey = (domain: string) => `deal-logo-provider:${domain}`;

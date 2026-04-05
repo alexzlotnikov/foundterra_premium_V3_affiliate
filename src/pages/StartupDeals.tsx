@@ -5,7 +5,6 @@ import { DEALS, Deal } from '@/lib/deals-data';
 import { HeroCounter } from '@/components/deals/HeroCounter';
 import { LogoStrip } from '@/components/deals/LogoStrip';
 import { DealCard } from '@/components/deals/DealCard';
-import { FoundterraCard } from '@/components/deals/FoundterraCard';
 import { useAppSumoDeals } from '@/hooks/useAppSumoDeals';
 import { DealExpiredCard } from '@/components/deals/DealExpiredCard';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -13,52 +12,64 @@ import { useLanguage } from '@/hooks/useLanguage';
 const credits = DEALS.filter((d) => d.category === 'credits');
 const partners = DEALS.filter((d) => d.category === 'partner');
 const alternatives = DEALS.filter((d) => d.category === 'alternative');
-const foundterraDeck = DEALS.find((d) => d.id === 'foundterra-deck')!;
-const foundterraReview = DEALS.find((d) => d.id === 'foundterra-review')!;
+
+const advisorReviewDeal: Deal = {
+  id: 'foundterra-advisor-review',
+  company: 'Foundterra',
+  domain: 'foundterra.com',
+  badge: '$100 Review',
+  description: 'Get an investor pitch deck review with clear fixes, priorities, and funding narrative guidance.',
+  link: '/paid-consultation',
+  category: 'alternative',
+  source: 'direct',
+  alternativeTo: 'Advisor',
+};
 
 const copy = {
   en: {
-    eyebrow: 'Curated by Foundterra — Premium Fundraising Advisory',
-    title: '$600,000+ in elite startup credits, discounts & founder perks',
-    subtitle: 'Built for ambitious founders: claim top-tier credits, cut software burn, and move faster toward your next raise.',
+    title: 'Founder savings unlocked: $600,000+ in startup value',
+    subtitle: 'Premium credits and tactical software offers to help you move faster and extend runway.',
     browse: 'Browse All Deals ↓',
-    review: 'Get My Deck Reviewed — $100',
     cloudTitle: '$760K+ in Cloud Credits',
-    cloudBody: 'Reduce runway burn with premium infrastructure credits founders can actually use right now.',
+    cloudBody: 'Reduce burn with high-impact infrastructure support for serious founders.',
     partnersTitle: 'Premium Tools at Founder Prices',
-    partnersBody: 'Handpicked SaaS offers to run growth, product, and fundraising operations like a world-class startup.',
-    altTitle: 'Pay Once. Own It Forever.',
-    altBody: 'Lean alternatives and lifetime deals to replace recurring subscriptions and protect cash flow.',
+    partnersBody: 'Curated discounts for product, growth, analytics, and fundraising execution.',
+    altTitle: 'Smart Alternatives That Protect Cash',
+    altBody: 'Live AppSumo checks + replacement logic, plus lean alternatives for recurring tools.',
     finalTitle: 'Your stack is ready. Now build the investor story.',
-    finalBody: "You have the tools. Now get the narrative, positioning, and strategy investors fund.",
-    finalCta1: '→ Start with a Free Deck Review',
-    finalCta2: '→ Book a Strategy Call',
+    finalBody: 'You have the tools. Now get the narrative, positioning, and strategy investors fund.',
+    finalCta: 'Book a Strategy Call',
+    bannerTitle: 'Free Fundraising Kit + Startup Tools',
+    bannerBody: 'Templates, investor update frameworks, and practical tools to tighten your fundraising process.',
+    bannerCta: 'Get Free Fundraising Kit',
   },
   he: {
-    eyebrow: 'נבחר בקפידה על ידי Foundterra — ייעוץ גיוס פרימיום',
-    title: 'יותר מ-$600,000 בקרדיטים, הנחות והטבות לסטארטאפים',
-    subtitle: 'לעדכנים שאפתניים: קבלו קרדיטים מובילים, הורידו עלויות תוכנה והתקדמו מהר יותר לסבב הבא.',
+    title: 'חיסכון אמיתי ליזמים: יותר מ-$600,000 בערך לסטארטאפ',
+    subtitle: 'קרדיטים והנחות לכלים פרקטיים שיעזרו לכם להתקדם מהר ולהאריך מסלול.',
     browse: 'צפו בכל הדילים ↓',
-    review: 'ביקורת דק ב-$100',
     cloudTitle: 'יותר מ-$760K בקרדיטי ענן',
-    cloudBody: 'הקטינו שריפת מזומנים עם קרדיטי תשתית פרימיום שאפשר לממש עכשיו.',
-    partnersTitle: 'כלי פרימיום במחירי Founders',
-    partnersBody: 'הטבות SaaS שנבחרו להפעלת צמיחה, מוצר וגיוס ברמה גבוהה.',
-    altTitle: 'משלמים פעם אחת. נשאר שלכם.',
-    altBody: 'אלטרנטיבות רזות ודילים לכל החיים במקום מנויים חודשיים יקרים.',
+    cloudBody: 'הקטינו עלויות תשתית עם הטבות משמעותיות ליזמים בשלבי צמיחה.',
+    partnersTitle: 'כלי פרימיום במחירי יזמים',
+    partnersBody: 'הנחות נבחרות לכלי מוצר, צמיחה, אנליטיקה והיערכות לגיוס.',
+    altTitle: 'אלטרנטיבות חכמות ששומרות על התקציב',
+    altBody: 'בדיקות AppSumo חיות + החלפות אוטומטיות, יחד עם חלופות רזות לכלים חודשיים.',
     finalTitle: 'הסטאק מוכן. עכשיו בונים סיפור שמשקיעים מממנים.',
     finalBody: 'יש לכם את הכלים. עכשיו צריך נרטיב, מיצוב ואסטרטגיה שמביאים השקעה.',
-    finalCta1: '→ התחילו בביקורת דק חינמית',
-    finalCta2: '→ קבעו שיחת אסטרטגיה',
+    finalCta: 'Book a Strategy Call',
+    bannerTitle: 'ערכת גיוס חינמית + כלי Startup',
+    bannerBody: 'תבניות, פורמט עדכונים למשקיעים וכלים פרקטיים לשיפור תהליך הגיוס.',
+    bannerCta: 'קבלו ערכת גיוס חינמית',
   },
 } as const;
 
 function AlternativeCard({ deal, slotIndex }: { deal: Deal; slotIndex: number }) {
-  const { isDealActive, getLiveLink, getReplacement } = useAppSumoDeals();
+  const { isDealActive, getLiveLink, getLiveBadge, getReplacement } = useAppSumoDeals();
 
   if (deal.source !== 'appsumo') return <DealCard deal={deal} />;
 
-  if (isDealActive(deal.id)) return <DealCard deal={{ ...deal, link: getLiveLink(deal.id, deal.link) }} />;
+  if (isDealActive(deal.id)) {
+    return <DealCard deal={{ ...deal, link: getLiveLink(deal.id, deal.link), badge: getLiveBadge(deal.id, deal.badge) }} />;
+  }
 
   const replacement = getReplacement(slotIndex);
 
@@ -78,19 +89,21 @@ function AlternativeCard({ deal, slotIndex }: { deal: Deal; slotIndex: number })
             source: 'appsumo',
             alternativeTo: deal.alternativeTo,
           }}
-          isReplacement
-          replacesName={deal.company}
         />
       )}
     </div>
   );
 }
 
-const sectionClass = 'container-max py-12 sm:py-16';
+const sectionClass = 'container-max py-12 text-center sm:py-16';
 
 const StartupDeals = () => {
-  const { language } = useLanguage();
-  const t = copy[language === 'he' ? 'he' : 'en'];
+  const { language, content } = useLanguage();
+  const isHebrew = language === 'he';
+  const t = copy[isHebrew ? 'he' : 'en'];
+
+  const middle = Math.ceil(alternatives.length / 2);
+  const alternativesWithAdvisor = [...alternatives.slice(0, middle), advisorReviewDeal, ...alternatives.slice(middle)];
 
   return (
     <div className="min-h-screen" style={{ fontFamily: 'var(--font-body)' }}>
@@ -99,16 +112,14 @@ const StartupDeals = () => {
         <meta name="description" content="Cloud credits, SaaS discounts, and AppSumo lifetime deals curated for founders." />
       </Helmet>
       <Header />
-      <main className="pt-20 sm:pt-24">
+      <main className="pt-20 sm:pt-24" dir={isHebrew ? 'rtl' : 'ltr'}>
         <section className="container-max py-12 text-center sm:py-16">
-          <p className="mb-4 text-[11px] uppercase tracking-[0.17em] text-[#9fa3d9] sm:text-xs">{t.eyebrow}</p>
-          <h1 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mx-auto mb-4 max-w-5xl text-3xl leading-tight text-[#EEEEF8] sm:text-5xl">{t.title}</h1>
-          <p className="mx-auto mb-8 max-w-3xl text-sm text-[#b8b8d7] sm:text-base">{t.subtitle}</p>
+          <h1 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mx-auto mb-4 max-w-5xl text-3xl leading-tight text-[#EEEEF8] sm:text-5xl">
+            {t.title}
+          </h1>
+          <p className="mx-auto mb-6 max-w-3xl text-sm text-[#b8b8d7] sm:text-base">{t.subtitle}</p>
           <div className="mb-8"><HeroCounter /></div>
-          <div className="flex flex-col justify-center gap-3 sm:flex-row">
-            <a href="#deals-start" className="rounded-lg bg-gradient-to-r from-[#6366F1] to-[#8a5cf6] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_40px_rgba(99,102,241,0.35)]">{t.browse}</a>
-            <a href="/paid-consultation" className="rounded-lg border border-[#3f3f6d] bg-[#17172a] px-5 py-3 text-sm font-semibold text-[#e4e4ff]">{t.review}</a>
-          </div>
+          <a href="#deals-start" className="inline-flex rounded-lg bg-gradient-to-r from-[#6366F1] to-[#8a5cf6] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_40px_rgba(99,102,241,0.35)]">{t.browse}</a>
         </section>
 
         <LogoStrip />
@@ -119,7 +130,13 @@ const StartupDeals = () => {
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{credits.map((deal) => <DealCard key={deal.id} deal={deal} />)}</div>
         </section>
 
-        <section className={sectionClass}><FoundterraCard deal={foundterraDeck} /></section>
+        <section className="container-max py-6 text-center sm:py-8">
+          <div className="rounded-2xl border border-[#434389] bg-[linear-gradient(135deg,#13153d_0%,#10253a_100%)] p-6 sm:p-8">
+            <h3 className="mb-2 text-2xl font-bold text-white">{t.bannerTitle}</h3>
+            <p className="mx-auto mb-5 max-w-3xl text-sm text-[#d1d4f4] sm:text-base">{t.bannerBody}</p>
+            <a href="/get-resources" className="inline-flex rounded-lg bg-[#10d9a0] px-5 py-3 text-sm font-bold text-[#06271c]">{t.bannerCta}</a>
+          </div>
+        </section>
 
         <section className={sectionClass}>
           <h2 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mb-2 text-2xl text-[#EEEEF8] sm:text-3xl">{t.partnersTitle}</h2>
@@ -130,17 +147,18 @@ const StartupDeals = () => {
         <section className={sectionClass}>
           <h2 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mb-2 text-2xl text-[#EEEEF8] sm:text-3xl">{t.altTitle}</h2>
           <p className="mb-8 text-sm text-[#a4a8cb] sm:text-base">{t.altBody}</p>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{alternatives.map((deal, index) => <AlternativeCard key={deal.id} deal={deal} slotIndex={index} />)}</div>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {alternativesWithAdvisor.map((deal, index) =>
+              deal.source === 'appsumo' ? <AlternativeCard key={deal.id} deal={deal} slotIndex={index} /> : <DealCard key={deal.id} deal={deal} />
+            )}
+          </div>
         </section>
-
-        <section className={sectionClass}><FoundterraCard deal={foundterraReview} /></section>
 
         <section className="container-max pb-16 pt-4 text-center sm:pb-20 sm:pt-8">
           <h2 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mb-3 text-2xl text-[#EEEEF8] sm:text-4xl">{t.finalTitle}</h2>
           <p className="mx-auto mb-6 max-w-2xl text-sm text-[#b8b8d7] sm:text-base">{t.finalBody}</p>
-          <div className="flex flex-col justify-center gap-3 sm:flex-row">
-            <a href="/paid-consultation" className="rounded-lg bg-[#6366F1] px-5 py-3 text-sm font-semibold text-white">{t.finalCta1}</a>
-            <a href="/paid-consultation" className="rounded-lg border border-[#34345a] px-5 py-3 text-sm font-semibold text-[#d8d8f4]">{t.finalCta2}</a>
+          <div className="flex justify-center">
+            <a href={content.cta.calendlyLink} target="_blank" rel="noreferrer" className="rounded-lg bg-[#6366F1] px-6 py-3 text-sm font-semibold text-white" dir="ltr">{t.finalCta}</a>
           </div>
         </section>
       </main>
