@@ -6,7 +6,6 @@ import { HeroCounter } from '@/components/deals/HeroCounter';
 import { LogoStrip } from '@/components/deals/LogoStrip';
 import { DealCard } from '@/components/deals/DealCard';
 import { useAppSumoDeals } from '@/hooks/useAppSumoDeals';
-import { DealExpiredCard } from '@/components/deals/DealExpiredCard';
 import { useLanguage } from '@/hooks/useLanguage';
 
 const credits = DEALS.filter((d) => d.category === 'credits');
@@ -63,36 +62,38 @@ const copy = {
 } as const;
 
 function AlternativeCard({ deal, slotIndex }: { deal: Deal; slotIndex: number }) {
-  const { isDealActive, getLiveLink, getLiveBadge, getReplacement } = useAppSumoDeals();
+  const { getLiveLink, getLiveBadge, getReplacement } = useAppSumoDeals();
 
   if (deal.source !== 'appsumo') return <DealCard deal={deal} />;
 
-  if (isDealActive(deal.id)) {
-    return <DealCard deal={{ ...deal, link: getLiveLink(deal.id, deal.link), badge: getLiveBadge(deal.id, deal.badge) }} />;
+  const liveLink = getLiveLink(deal.id, deal.link);
+  const liveBadge = getLiveBadge(deal.id, deal.badge);
+
+  // Never show expired UI; either use live deal data or silently swap with a replacement.
+  if (liveLink && liveBadge) {
+    return <DealCard deal={{ ...deal, link: liveLink, badge: liveBadge }} />;
   }
 
   const replacement = getReplacement(slotIndex);
+  if (replacement) {
+    return (
+      <DealCard
+        deal={{
+          id: `replacement-${slotIndex}`,
+          company: replacement.name,
+          domain: '',
+          badge: replacement.badge,
+          description: replacement.description,
+          link: replacement.link,
+          category: 'alternative',
+          source: 'appsumo',
+          alternativeTo: deal.alternativeTo,
+        }}
+      />
+    );
+  }
 
-  return (
-    <div className="space-y-3">
-      <DealExpiredCard deal={deal} />
-      {replacement && (
-        <DealCard
-          deal={{
-            id: `replacement-${slotIndex}`,
-            company: replacement.name,
-            domain: '',
-            badge: replacement.badge,
-            description: replacement.description,
-            link: replacement.link,
-            category: 'alternative',
-            source: 'appsumo',
-            alternativeTo: deal.alternativeTo,
-          }}
-        />
-      )}
-    </div>
-  );
+  return <DealCard deal={deal} />;
 }
 
 const sectionClass = 'container-max py-12 text-center sm:py-16';
