@@ -14,12 +14,16 @@ const domainOverrides: Record<string, string[]> = {
     'https://www.google.com/s2/favicons?domain=apollo.io&sz=128',
   ],
   'sendpilot.io': [
-    'https://www.google.com/s2/favicons?domain=sendpilot.io&sz=128',
-    'https://icons.duckduckgo.com/ip3/sendpilot.io.ico',
+    'https://logo.clearbit.com/appsumo.com',
+    'https://www.google.com/s2/favicons?domain=appsumo.com&sz=128',
   ],
   'breezedoc.com': [
-    'https://www.google.com/s2/favicons?domain=breezedoc.com&sz=128',
-    'https://icons.duckduckgo.com/ip3/breezedoc.com.ico',
+    'https://logo.clearbit.com/appsumo.com',
+    'https://www.google.com/s2/favicons?domain=appsumo.com&sz=128',
+  ],
+  'breezedocs.com': [
+    'https://logo.clearbit.com/appsumo.com',
+    'https://www.google.com/s2/favicons?domain=appsumo.com&sz=128',
   ],
 };
 

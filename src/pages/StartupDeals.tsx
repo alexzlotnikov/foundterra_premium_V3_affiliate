@@ -26,10 +26,10 @@ const advisorReviewDeal: Deal = {
 
 const copy = {
   en: {
-    title: 'Founder savings unlocked: $600,000+ in startup value',
+    title: 'Founder savings unlocked: up to $600,000 in startup value',
     subtitle: 'Premium credits and tactical software offers to help you move faster and extend runway.',
     browse: 'Browse All Deals ↓',
-    cloudTitle: '$760K+ in Cloud Credits',
+    cloudTitle: 'Free Startup Cloud Credits',
     cloudBody: 'Reduce burn with high-impact infrastructure support for serious founders.',
     partnersTitle: 'Premium Tools at Founder Prices',
     partnersBody: 'Curated discounts for product, growth, analytics, and fundraising execution.',
