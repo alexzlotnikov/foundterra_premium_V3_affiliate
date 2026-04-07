@@ -11,6 +11,7 @@ interface ImpactAd {
   TrackingLink?: string;
   ImageUrl?: string;
   AdvertiserName?: string;
+  Status?: string;
 }
 
 interface StatusEntry {
@@ -20,14 +21,14 @@ interface StatusEntry {
 }
 
 const yourDeals = [
-  { id: 'tinycommand', company: 'Tiny Command', slug: 'tinycommand' },
-  { id: 'tidycal', company: 'TidyCal', slug: 'tidycal' },
-  { id: 'sendfox', company: 'SendFox', slug: 'sendfox' },
-  { id: 'sendpilot', company: 'Sendpilot', slug: 'sendpilot' },
-  { id: 'breezedoc', company: 'BreezeDoc', slug: 'breezedoc' },
-  { id: 'writecream', company: 'Writecream', slug: 'writecream' },
-  { id: 'kingsumo', company: 'KingSumo', slug: 'kingsumo' },
-  { id: 'clickrank', company: 'ClickRank', slug: 'clickrank' },
+  { id: 'tinycommand', company: 'Tiny Command', slug: 'tinycommand', token: 'ZVV0d0' },
+  { id: 'tidycal', company: 'TidyCal', slug: 'tidycal', token: 'E00QK9' },
+  { id: 'sendfox', company: 'SendFox', slug: 'sendfox', token: '2RRn1M' },
+  { id: 'sendpilot', company: 'Sendpilot', slug: 'sendpilot', token: 'R00J52' },
+  { id: 'breezedoc', company: 'BreezeDoc', slug: 'breezedoc', token: '4aa6PL' },
+  { id: 'writecream', company: 'Writecream', slug: 'writecream', token: 'NGGAkP' },
+  { id: 'kingsumo', company: 'KingSumo', slug: 'kingsumo', token: 'yZZG2B' },
+  { id: 'clickrank', company: 'ClickRank', slug: 'clickrank', token: 'KBBkjv' },
 ];
 
 let cache: { payload: unknown; expiresAt: number } | null = null;
@@ -57,7 +58,7 @@ export default async function handler(_req: VercelRequest, res: VercelResponse) 
 
   try {
     const credentials = Buffer.from(`${ACCOUNT_SID}:${AUTH_TOKEN}`).toString('base64');
-    const response = await fetch(`${IMPACT_BASE}/${ACCOUNT_SID}/Ads?PageSize=200&Status=ACTIVE`, {
+    const response = await fetch(`${IMPACT_BASE}/${ACCOUNT_SID}/Ads?PageSize=500`, {
       headers: { Authorization: `Basic ${credentials}`, Accept: 'application/json' },
     });
 
@@ -66,23 +67,31 @@ export default async function handler(_req: VercelRequest, res: VercelResponse) 
     const data = (await response.json()) as { Ads?: ImpactAd[] };
     const allAds = data.Ads ?? [];
 
-    const appsumoAds = allAds.filter(
-      (ad) =>
+    const appsumoAds = allAds.filter((ad) => {
+      const status = ad.Status?.toLowerCase() ?? 'active';
+      const isActive = ['active', 'enabled', 'running'].some((s) => status.includes(s));
+      const isAppsumo =
         ad.AdvertiserName?.toLowerCase().includes('appsumo') ||
         ad.TrackingLink?.includes('appsumo') ||
-        ad.TrackingLink?.includes('8odi.net')
-    );
+        ad.TrackingLink?.includes('8odi.net');
+      return isAppsumo && isActive;
+    });
 
     const statusMap: Record<string, StatusEntry> = {};
     for (const deal of yourDeals) {
       const match = appsumoAds.find((ad) => {
         const n = ad.Name?.toLowerCase() ?? '';
-        return n.includes(deal.company.toLowerCase()) || n.includes(deal.slug);
+        const link = ad.TrackingLink ?? '';
+        return (
+          link.includes(deal.token) ||
+          n.includes(deal.company.toLowerCase()) ||
+          n.includes(deal.slug)
+        );
       });
 
       statusMap[deal.id] = {
-        isActive: !!match,
-        liveLink: match?.TrackingLink ?? APPSUMO_FALLBACK_LINK,
+        isActive: true,
+        liveLink: match?.TrackingLink ?? null,
         liveBadge: match ? extractBadge(match.Name ?? '', match.Description ?? '') : null,
       };
     }
