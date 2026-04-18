@@ -1,20 +1,21 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "react-router-dom";
-import { Linkedin, Instagram } from "lucide-react";
-import { FaTelegram, FaDiscord, FaTiktok, FaFacebookF, FaYoutube } from "react-icons/fa";
+import { Linkedin } from "lucide-react";
+import { FaTelegram, FaDiscord, FaTiktok, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import socialLinksData from "@/content/socialLinks.json";
 
 const Footer = () => {
-  const { content, language } = useLanguage();
+  const { content } = useLanguage();
 
   const socialIcons = {
     telegram: FaTelegram,
     linkedin: Linkedin,
     discord: FaDiscord,
     tiktok: FaTiktok,
-    instagram: Instagram,
-    facebook: FaFacebookF,
     youtube: FaYoutube,
+    whatsapp: FaWhatsapp,
+    x: FaXTwitter,
   };
 
   const enabledSocialLinks = Object.entries(socialLinksData.socialLinks)
@@ -71,7 +72,7 @@ const Footer = () => {
         )}
 
         {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {content.footer.sections.map((section, index) => (
             <div key={index}>
               <h4 className="font-semibold text-foreground mb-3 sm:mb-4 responsive-text-xs font-serif">{section.title}</h4>
@@ -89,71 +90,16 @@ const Footer = () => {
               </ul>
             </div>
           ))}
-        </div>
-
-
-        <div className="text-center mb-8 space-y-2">
-          <div className="border border-[rgba(123,82,245,0.35)] bg-[rgba(123,82,245,0.08)] p-3 sm:p-4">
-            <p className="text-[10px] sm:text-xs tracking-[0.14em] uppercase text-[var(--purple-light)] mb-1 font-body">New Free Tool</p>
-            <Link
-              to={language === "he" ? "/he/market-size" : "/market-size"}
-              className="text-foreground hover:text-[var(--purple-light)] transition-colors responsive-text-sm font-body"
-            >
-              {language === "he" ? "מחשבון TAM/SAM/SOM חינמי" : "Free TAM/SAM/SOM Calculator"}
-            </Link>
-            <p className="text-xs text-muted-foreground mt-1 font-body">
-              {language === "he" ? "בנה TAM/SAM/SOM והורד שקף שוק" : "Build TAM/SAM/SOM + export your market slide"}
-            </p>
-          </div>
-
           <div>
-            <Link
-              to="/deck-architect"
-              className="text-[var(--purple-light)] hover:text-foreground transition-colors responsive-text-sm font-body"
-            >
-              Deck Architect Tool
-            </Link>
-            <p className="text-xs text-muted-foreground mt-1 font-body">
-              Build your perfect pitch deck structure — free →
-            </p>
+            <h4 className="font-semibold text-foreground mb-3 sm:mb-4 responsive-text-xs font-serif">Free Services</h4>
+            <ul className="space-y-1.5 sm:space-y-2">
+              <li><Link to="/pitch-review" className="text-muted-foreground hover:text-primary transition-colors responsive-text-xs font-body">Pitch Deck Review</Link></li>
+              <li><Link to="/deck-architect" className="text-muted-foreground hover:text-primary transition-colors responsive-text-xs font-body">Deck Architect</Link></li>
+              <li><Link to="/financial-model" className="text-muted-foreground hover:text-primary transition-colors responsive-text-xs font-body">Financial Model Tool</Link></li>
+              <li><Link to="/saas-metric-auditor" className="text-muted-foreground hover:text-primary transition-colors responsive-text-xs font-body">SaaS Metric Auditor</Link></li>
+              <li><Link to="/investor-ready" className="text-muted-foreground hover:text-primary transition-colors responsive-text-xs font-body">Investor Readiness Quiz</Link></li>
+            </ul>
           </div>
-          <div>
-            <Link
-              to="/pitch-review"
-              className="text-[var(--purple-light)] hover:text-foreground transition-colors responsive-text-sm font-body"
-            >
-              Free Pitch Deck Reviewer
-            </Link>
-            <p className="text-xs text-muted-foreground mt-1 font-body">
-              Instant VC readiness score + recommendations
-            </p>
-          </div>
-
-          <div>
-            <Link
-              to="/saas-metric-auditor"
-              className="text-[var(--purple-light)] hover:text-foreground transition-colors responsive-text-sm font-body"
-            >
-              Free SaaS Metric Auditor
-            </Link>
-          </div>
-          <div>
-            <Link
-              to="/financial-model"
-              className="text-[var(--purple-light)] hover:text-foreground transition-colors responsive-text-sm font-body"
-            >
-              Free Financial Model Tool
-            </Link>
-          </div>
-          <div>
-            <Link
-              to="/investor-ready"
-              className="text-[var(--purple-light)] hover:text-foreground transition-colors responsive-text-sm font-body"
-            >
-              Free Investor Readiness Quiz
-            </Link>
-          </div>
-
         </div>
 
         {/* Copyright */}
