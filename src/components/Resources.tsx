@@ -30,11 +30,11 @@ const Resources = () => {
           {content.resources.items.map((resource, index) => {
             const IconComponent = iconMap[resource.icon as keyof typeof iconMap];
             return (
-              <Card 
-                key={index} 
-                className="card-elevated animate-slide-up cursor-pointer"
-                style={{animationDelay: `${index * 0.1}s`}}
-              >
+                <Card 
+                  key={index} 
+                  className="card-elevated animate-slide-up cursor-pointer"
+                  style={{animationDelay: `${index * 0.1}s`}}
+                >
                 <CardHeader className="pb-4">
                   <div className="w-12 h-12 icon-glow rounded-lg flex items-center justify-center mb-4">
                     <IconComponent className="w-6 h-6 text-primary" />
@@ -42,6 +42,13 @@ const Resources = () => {
                   <CardTitle className="text-lg font-serif">{resource.title}</CardTitle>
                   <CardDescription className="font-body">{resource.description}</CardDescription>
                 </CardHeader>
+                <CardContent>
+                  <Link to="/get-resources">
+                    <Button variant="outline" className="w-full">
+                      {resource.cta}
+                    </Button>
+                  </Link>
+                </CardContent>
               </Card>
             );
           })}
