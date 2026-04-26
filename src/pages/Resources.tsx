@@ -152,6 +152,13 @@ const Resources = () => {
       description: "Organize critical documents for due diligence and investors",
       icon: BookOpen,
       link: "/resources/startup-data-room"
+    },
+
+    {
+      title: "Investors Update System",
+      description: "Framework and template for monthly/quarterly investor updates",
+      icon: FileText,
+      link: "/resources/investors-update-system"
     }
   ];
 
