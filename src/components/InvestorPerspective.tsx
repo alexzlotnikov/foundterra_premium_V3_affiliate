@@ -1,13 +1,13 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote, Linkedin } from "lucide-react";
-import founderPhoto from "@/assets/founder-photo.jpg";
 import ggwLogo from "@/assets/ggw-ventures-logo.png";
 import lvlupLogo from "@/assets/lvlup-ventures-logo.png";
 import foundersInstituteLogo from "@/assets/founders-institute-logo.png";
 const ganasVenturesLogo = "https://i.ibb.co/7JTnzJk5/GANAS-VC-removebg-preview-m3an0-HJ.webp";
 const flashpointVcLogo = "https://i.ibb.co/vx0Jn8Dw/292e65e9-a9e8-4e90-b726-3b055b8f9025-0-1.webp";
 const boardyVenturesLogo = "https://i.ibb.co/B2yQwm4D/690d8bb37b555132c802fce0-mobiletitle.webp";
+const founderPhoto = "https://i.ibb.co/mVXr8YBG/photo-2026-04-26-20-52-27.jpg";
 
 
 const InvestorPerspective = () => {
@@ -41,12 +41,6 @@ const InvestorPerspective = () => {
                   <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
                   }} />
-                </div>
-                {/* Rotating glass seal */}
-                <div className="absolute -bottom-3 -right-3 w-16 h-16 sm:w-20 sm:h-20 rounded-full glass-card flex items-center justify-center animate-[spin_20s_linear_infinite]">
-                  <div className="text-[6px] sm:text-[7px] text-primary/70 font-mono text-center leading-tight">
-                    Active<br/>Venture<br/>Associate
-                  </div>
                 </div>
               </div>
 

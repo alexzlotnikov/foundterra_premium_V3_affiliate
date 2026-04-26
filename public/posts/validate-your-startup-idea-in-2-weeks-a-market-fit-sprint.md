@@ -1,6 +1,6 @@
 ---
 title: "Validate Your Startup Idea in 2 Weeks: A Market Fit Sprint"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at Validate Your Startup Idea in 2 Weeks: A Market Fit Sprint."
 slug: "validate-your-startup-idea-in-2-weeks-a-market-fit-sprint"
 coverImage: "https://i.ibb.co/3mr6QQ4H/1c1597f34ee6.jpg"

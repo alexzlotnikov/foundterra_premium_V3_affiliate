@@ -97,6 +97,26 @@ function AlternativeCard({ deal, slotIndex }: { deal: Deal; slotIndex: number })
 }
 
 const sectionClass = 'container-max py-12 text-center sm:py-16';
+const strategicPartners = [
+  {
+    name: 'Boardy',
+    href: 'https://www.boardy.ai',
+    description: 'AI Superconnector! He knows who you should meet before you do.',
+    icon: 'https://i.ibb.co/jCwHQ1D/boardy-box-head.png',
+  },
+  {
+    name: 'Michigan Israel',
+    href: 'https://www.michiganisrael.com/',
+    description: 'Free dedicated office space and a US address to facilitate business operations for Israeli startups.',
+    icon: 'https://i.ibb.co/HDN916TT/MIBA-Logo.jpg',
+  },
+  {
+    name: 'Polybox Design',
+    href: 'https://polybox.studio/',
+    description: 'Your SaaS design department, without the department.',
+    icon: 'https://i.ibb.co/3myMZmRV/Polybox-Logotype-White.jpg',
+  },
+];
 
 const StartupDeals = () => {
   const { language, content } = useLanguage();
@@ -109,7 +129,7 @@ const StartupDeals = () => {
   return (
     <div className="min-h-screen" style={{ fontFamily: 'var(--font-body)' }}>
       <Helmet>
-        <title>Free Startup Deals 2025 — $600K+ in Credits | Foundterra</title>
+        <title>Free Startup Deals 2026 — $600K+ in Credits | Foundterra</title>
         <meta name="description" content="Cloud credits, SaaS discounts, and AppSumo lifetime deals curated for founders." />
       </Helmet>
       <Header />
@@ -143,6 +163,27 @@ const StartupDeals = () => {
           <h2 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mb-2 text-2xl text-[#EEEEF8] sm:text-3xl">{t.partnersTitle}</h2>
           <p className="mb-8 text-sm text-[#a4a8cb] sm:text-base">{t.partnersBody}</p>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{partners.map((deal) => <DealCard key={deal.id} deal={deal} />)}</div>
+        </section>
+
+        <section className={sectionClass}>
+          <h2 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mb-8 text-2xl text-[#EEEEF8] sm:text-3xl">Partners</h2>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {strategicPartners.map((partner) => (
+              <a
+                key={partner.name}
+                href={partner.href}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-2xl border border-[#3e3c86] bg-[linear-gradient(135deg,#10133a_0%,#0b1e34_100%)] p-6 text-left transition hover:-translate-y-1 hover:border-[#6160bd]"
+              >
+                <div className="mb-4 flex h-16 items-center justify-start">
+                  <img src={partner.icon} alt={partner.name} className="max-h-16 w-auto object-contain" loading="lazy" />
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-[#EEEEF8]">{partner.name}</h3>
+                <p className="text-sm text-[#b8b8d7]">{partner.description}</p>
+              </a>
+            ))}
+          </div>
         </section>
 
         <section className={sectionClass}>

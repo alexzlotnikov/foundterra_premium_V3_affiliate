@@ -1,6 +1,6 @@
 ---
 title: "Why Pre-Seed Investors Bet on Founders, Not Just Products"
-date: "2025-09-27"
+date: "2026-09-27"
 excerpt: "In the exhilarating, often chaotic world of pre-seed startup funding, a common refrain among seasoned investors is that they invest in the founder, not the product. For an outsider, this might seem counterintuitive. Isn't a startup all about its innovative solution or groundbreaking technology? While those aspects are certainly crucial later on, at the pre-seed stage, the product is often an idea on a napkin, a rudimentary prototype, or simply a passionate vision. So, why do investors put their money behind the person rather than the nascent offering? It all boils down to uncertainty, potential, and the human element."
 slug: "why-pre-seed-investors-bet-on-founders-not-just-products"
 coverImage: "https://i.ibb.co/fVY6MSLH/3934a42f673d.jpg"

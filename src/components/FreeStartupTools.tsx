@@ -53,35 +53,43 @@ const FreeStartupTools = ({ className = "", sectionId = "free-startup-tools", hi
       className={`section-padding scroll-mt-24 ${highlighted ? "tool-section-highlight" : ""} ${className}`}
     >
       <div className="container-max">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold font-serif">
-            Free <span className="gradient-text">Startup Tools</span>
-          </h2>
-          <p className="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
-            Use our free founder tools to improve your pitch, validate assumptions, and prepare for fundraising.
-          </p>
-        </div>
+        <div
+          className={
+            highlighted
+              ? "rounded-3xl border border-primary/30 bg-background/80 p-6 md:p-10 shadow-[0_0_0_1px_rgba(139,92,246,0.25),0_0_40px_rgba(139,92,246,0.2)]"
+              : ""
+          }
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold font-serif">
+              Free <span className="gradient-text">Startup Tools</span>
+            </h2>
+            <p className="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
+              Use our free founder tools to improve your pitch, validate assumptions, and prepare for fundraising.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {TOOLS.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <Link
-                to={tool.href}
-                key={tool.href}
-                className="card-elevated border border-border/70 bg-card/80 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
-              >
-                <div className="w-11 h-11 rounded-lg icon-glow flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{tool.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{tool.description}</p>
-                <span className="inline-flex items-center text-sm font-medium text-primary">
-                  Open tool <ArrowRight className="w-4 h-4 ml-1" />
-                </span>
-              </Link>
-            );
-          })}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {TOOLS.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <Link
+                  to={tool.href}
+                  key={tool.href}
+                  className="card-elevated border border-border/70 bg-card/80 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
+                >
+                  <div className="w-11 h-11 rounded-lg icon-glow flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{tool.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{tool.description}</p>
+                  <span className="inline-flex items-center text-sm font-medium text-primary">
+                    Open tool <ArrowRight className="w-4 h-4 ml-1" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

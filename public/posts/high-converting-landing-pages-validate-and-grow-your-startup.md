@@ -1,6 +1,6 @@
 ---
 title: "High-Converting Landing Pages: Validate & Grow Your Startup"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at High-Converting Landing Pages: Validate & Grow Your Startup."
 slug: "high-converting-landing-pages-validate-and-grow-your-startup"
 coverImage: "https://i.ibb.co/Q35NhVgd/52b74c8d92bf.jpg"

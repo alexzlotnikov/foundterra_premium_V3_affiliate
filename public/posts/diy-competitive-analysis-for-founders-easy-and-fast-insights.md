@@ -1,6 +1,6 @@
 ---
 title: "DIY Competitive Analysis for Founders: Easy & Fast Insights"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at DIY Competitive Analysis for Founders: Easy & Fast Insights."
 slug: "diy-competitive-analysis-for-founders-easy-and-fast-insights"
 coverImage: "https://i.ibb.co/1JfYs8kW/b7d07eb598c5.jpg"

@@ -12,6 +12,8 @@ interface Resource {
   description: string;
   icon: LucideIcon;
   link: string;
+  ctaLabel?: string;
+  ctaClassName?: string;
 }
 
 /* 
@@ -45,7 +47,9 @@ const Resources = () => {
       title: "Tools for Your Startup",
       description: "Essential tools and resources to build and grow your startup",
       icon: Wrench,
-      link: "https://meteor-lunge-328.notion.site/Tools-for-your-startup-297b63ebe2cc80d0a123eb278fa49796"
+      link: "/startup-deals",
+      ctaLabel: "Free Startup Credits",
+      ctaClassName: "bg-green-600 text-white border-green-600 hover:bg-green-700 hover:border-green-700"
     },
     {
       title: "Pre-Seed Checklist",
@@ -198,16 +202,16 @@ const Resources = () => {
                       <CardContent>
                         <Button
                           variant="outline"
-                          className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                          className={`w-full transition-colors ${resource.ctaClassName ?? "group-hover:bg-primary group-hover:text-primary-foreground"}`}
                           asChild
                         >
                           <a
                             href={resource.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target={resource.link.startsWith("/") ? undefined : "_blank"}
+                            rel={resource.link.startsWith("/") ? undefined : "noopener noreferrer"}
                             className="flex items-center justify-center gap-2"
                           >
-                            Access Resource
+                            {resource.ctaLabel ?? "Access Resource"}
                             <ExternalLink className="w-4 h-4" />
                           </a>
                         </Button>

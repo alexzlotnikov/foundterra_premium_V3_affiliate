@@ -1,6 +1,6 @@
 ---
 title: "From Concept to Capital: A Founder's Guide to Building a Software Startup and a Winning Pitch Deck"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at From Concept to Capital: A Founder's Guide to Building a Software Startup and a Winning Pitch Deck."
 slug: "from-concept-to-capital-a-founders-guide-to-building-a-software-startup-and-a-winning-pitch-deck"
 coverImage: "https://i.ibb.co/39DgWP7b/14d66fbc1a09.jpg"

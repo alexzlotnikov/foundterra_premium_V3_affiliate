@@ -92,7 +92,7 @@ const Referral = () => {
                     <Button
                       variant="hero"
                       size="lg"
-                      onClick={() => window.open(content.cta.calendlyLink, '_blank')}
+                      onClick={() => window.location.href = 'mailto:info@foundterra.com'}
                       className="text-lg px-8"
                     >
                       {referral.cta.button}
