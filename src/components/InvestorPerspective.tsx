@@ -1,13 +1,13 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote, Linkedin } from "lucide-react";
-import founderPhoto from "@/assets/founder-photo.jpg";
 import ggwLogo from "@/assets/ggw-ventures-logo.png";
 import lvlupLogo from "@/assets/lvlup-ventures-logo.png";
 import foundersInstituteLogo from "@/assets/founders-institute-logo.png";
 const ganasVenturesLogo = "https://i.ibb.co/7JTnzJk5/GANAS-VC-removebg-preview-m3an0-HJ.webp";
 const flashpointVcLogo = "https://i.ibb.co/vx0Jn8Dw/292e65e9-a9e8-4e90-b726-3b055b8f9025-0-1.webp";
 const boardyVenturesLogo = "https://i.ibb.co/B2yQwm4D/690d8bb37b555132c802fce0-mobiletitle.webp";
+const founderPhoto = "https://i.ibb.co/mVXr8YBG/photo-2026-04-26-20-52-27.jpg";
 
 
 const InvestorPerspective = () => {

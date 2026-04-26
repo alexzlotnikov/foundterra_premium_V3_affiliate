@@ -436,7 +436,7 @@
     },
     "referral": {
       "title": "Foundterra Affiliate Program",
-      "subtitle": "Earn 5% commission by helping fellow founders get investor-ready",
+      "subtitle": "Earn 10% commission by helping fellow founders get investor-ready",
       "how": {
         "title": "How It Works",
         "steps": [
@@ -450,7 +450,7 @@
           },
           {
             "title": "Earn Rewards",
-            "description": "Receive 5% commission on every purchase from your introductions"
+            "description": "Receive 10% commission on every purchase from your introductions"
           }
         ]
       },
@@ -458,8 +458,8 @@
         "title": "Program Benefits",
         "items": [
           {
-            "title": "5% Commission",
-            "description": "Earn 5% of every successful referral's purchase"
+            "title": "10% Commission",
+            "description": "Earn 10% of every successful referral's purchase"
           },
           {
             "title": "Help Fellow Founders",
