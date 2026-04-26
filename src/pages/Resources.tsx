@@ -55,103 +55,103 @@ const Resources = () => {
       title: "Pre-Seed Checklist",
       description: "Essential checklist to prepare your startup before seeking funding",
       icon: CheckSquare,
-      link: "https://meteor-lunge-328.notion.site/Pre-Seed-Checklist-28bb63ebe2cc80bdb0efecd2edea27a6"
+      link: "/resources/pre-seed-checklist"
     },
     {
       title: "Startup Incorporation Guide",
       description: "Complete guide to legally incorporating your startup",
       icon: BookOpen,
-      link: "https://meteor-lunge-328.notion.site/Startup-Incorporation-Guide-291b63ebe2cc806a99e8df2a39bc0f9e"
+      link: "/resources/startup-incorporation-guide"
     },
     {
       title: "Pitch Deck Templates",
       description: "Professional pitch deck templates to impress investors",
       icon: FileText,
-      link: "https://meteor-lunge-328.notion.site/Pitch-Deck-Templates-28bb63ebe2cc80e9a60ede21378cb3c7"
+      link: "https://drive.google.com/drive/folders/1zvWFXpvHzi0eEAEhOLgxczkZ5GFYB5cL?usp=sharing"
     },
     {
       title: "VC List",
       description: "Comprehensive database of venture capital firms",
       icon: DollarSign,
-      link: "https://meteor-lunge-328.notion.site/VC-list-28ab63ebe2cc8031a34fccc94c3bc76b"
+      link: "/resources/vc-list"
     },
     {
       title: "Accelerators Database",
       description: "Find the right accelerator program for your startup",
       icon: Rocket,
-      link: "https://meteor-lunge-328.notion.site/Accelerators-Database-28db63ebe2cc802dbb42f3031592a33f"
+      link: "https://docs.google.com/spreadsheets/d/12AV2yMV2QHu52WBMNA5Af6UMXZDxuW6R84HIzvUm68c/edit?usp=sharing"
     },
     {
       title: "Investors Investing in Israel",
       description: "Directory of investors focused on the Israeli startup ecosystem",
       icon: Target,
-      link: "https://meteor-lunge-328.notion.site/Investors-Investing-in-Israel-28ab63ebe2cc806ea8f1d98748469822"
+      link: "https://docs.google.com/spreadsheets/d/1UfhozWDpxY80I7jvY4tY-utN6wxz0-FnF0JA7dPjEz8/edit?usp=sharing"
     },
     {
       title: "How to Cold Reach Investors",
       description: "Proven strategies for reaching out to investors effectively",
       icon: Users,
-      link: "https://meteor-lunge-328.notion.site/How-to-cold-reach-investors-28eb63ebe2cc8058991bcb37b3239cec"
+      link: "/resources/how-to-cold-reach-investors"
     },
     {
       title: "Viral Startup Launch Checklist",
       description: "Step-by-step guide to launching your startup with maximum impact",
       icon: Rocket,
-      link: "https://meteor-lunge-328.notion.site/Viral-Startup-Launch-Checklist-28eb63ebe2cc8003bd77de55378e5171"
+      link: "/resources/viral-startup-launch-checklist"
     },
     {
       title: "Platforms to Promote Your Startup",
       description: "Best platforms and communities to gain visibility and traction",
       icon: TrendingUp,
-      link: "https://meteor-lunge-328.notion.site/Platforms-to-promote-your-startup-28fb63ebe2cc8035b496e7a87065e242"
+      link: "https://docs.google.com/spreadsheets/d/1fxgy7HeJRHNp7jPjRHQr6hHfHGupfzipzWAduVHHU1k/edit?usp=sharing"
     },
     {
       title: "Early Traction Metrics That Matter",
       description: "Key metrics to track in your startup's early stages",
       icon: TrendingUp,
-      link: "https://meteor-lunge-328.notion.site/Early-Traction-Metrics-that-matter-291b63ebe2cc802a909afa8f200a7c3e"
+      link: "/resources/early-traction-metrics"
     },
     {
       title: "Customer Interview Script Framework",
       description: "Structured framework for conducting effective customer interviews",
       icon: Users,
-      link: "https://meteor-lunge-328.notion.site/Customer-Interview-Script-Framework-291b63ebe2cc802ea67ccf975384556c"
+      link: "/resources/customer-interview-script-framework"
     },
     {
       title: "How to Estimate Market Size",
       description: "Calculate and validate your total addressable market",
       icon: Target,
-      link: "https://meteor-lunge-328.notion.site/How-to-Estimate-Market-Size-for-Your-Startup-291b63ebe2cc80858dd8f86c815b58e9"
+      link: "/resources/how-to-estimate-market-size"
     },
     {
       title: "Startup Competitive Analysis",
       description: "Framework for analyzing and positioning against competitors",
       icon: Target,
-      link: "https://meteor-lunge-328.notion.site/Startup-Competitive-Analysis-291b63ebe2cc80d4a3fbcec9a6de00c9"
+      link: "/resources/startup-competitive-analysis"
     },
     {
       title: "Cap Table Template",
       description: "Track equity distribution and ownership in your startup",
       icon: FileText,
-      link: "https://meteor-lunge-328.notion.site/Cap-Table-template-291b63ebe2cc802bae64f23f029752fa"
+      link: "https://docs.google.com/spreadsheets/d/1fy_mHr3I5gf9Q2Gb3whnSz4yAEl7e0RB/edit?usp=sharing&ouid=102122802749869815811&rtpof=true&sd=true"
     },
     {
       title: "How to Calculate Cash Runway",
       description: "Understand how long your startup can operate with current funds",
       icon: DollarSign,
-      link: "https://meteor-lunge-328.notion.site/How-to-Calculate-Cash-Runway-291b63ebe2cc8076bc8ce1d9f4969d5a"
+      link: "/resources/how-to-calculate-cash-runway"
     },
     {
       title: "Feature Prioritization Framework",
       description: "Prioritize product features based on impact and resources",
       icon: CheckSquare,
-      link: "https://meteor-lunge-328.notion.site/Feature-Prioritization-Framework-291b63ebe2cc80b3a52ee0e46b28a62b"
+      link: "/resources/feature-prioritization-framework"
     },
     {
       title: "Startup Data Room",
       description: "Organize critical documents for due diligence and investors",
       icon: BookOpen,
-      link: "https://meteor-lunge-328.notion.site/Startup-Data-Room-293b63ebe2cc804f8b7cfc8524d36f64"
+      link: "/resources/startup-data-room"
     }
   ];
 
