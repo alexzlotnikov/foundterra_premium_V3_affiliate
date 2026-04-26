@@ -21,7 +21,7 @@ const Cookies = () => {
                   COOKIE POLICY
                 </h1>
                 <p className="text-center text-muted-foreground mb-12">
-                  Last updated September 13, 2025
+                  Last updated September 13, 2026
                 </p>
                 
                 <div className="bg-card rounded-lg p-8 border">

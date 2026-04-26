@@ -1,6 +1,6 @@
 ---
 title: "Build an MVP with Built-in Monetization & Analytics"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at Build an MVP with Built-in Monetization & Analytics."
 slug: "build-an-mvp-with-built-in-monetization-and-analytics"
 coverImage: "https://i.ibb.co/s97JrdQn/ffe80747fc30.jpg"

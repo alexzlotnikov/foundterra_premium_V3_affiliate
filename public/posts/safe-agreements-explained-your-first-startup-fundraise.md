@@ -1,6 +1,6 @@
 ---
 title: "SAFE Agreements Explained: Your First Startup Fundraise"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at SAFE Agreements Explained: Your First Startup Fundraise."
 slug: "safe-agreements-explained-your-first-startup-fundraise"
 coverImage: "https://i.ibb.co/FRmzvDV/f710c32c48d4.jpg"

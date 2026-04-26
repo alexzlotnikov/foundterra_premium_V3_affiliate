@@ -1,6 +1,6 @@
 ---
 title: "Delaware C-Corp vs. Other Startup Structures: Your Investor-Ready Foundation"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at Delaware C-Corp vs. Other Startup Structures: Your Investor-Ready Foundation."
 slug: "delaware-c-corp-vs-other-startup-structures-your-investor-ready-foundation"
 coverImage: "https://i.ibb.co/23MyMSwQ/687ded00e287.jpg"

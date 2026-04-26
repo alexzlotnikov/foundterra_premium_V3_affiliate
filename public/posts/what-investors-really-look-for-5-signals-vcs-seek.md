@@ -1,6 +1,6 @@
 ---
 title: "What Investors Really Look For: 5 Signals VCs Seek"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at What Investors Really Look For: 5 Signals VCs Seek."
 slug: "what-investors-really-look-for-5-signals-vcs-seek"
 coverImage: "https://i.ibb.co/rK59GXXt/44e5fba19230.jpg"

@@ -1,6 +1,6 @@
 ---
 title: "Startup Foundations: Preparing Your Business for Future Growth & Investment"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at Startup Foundations: Preparing Your Business for Future Growth & Investment."
 slug: "startup-foundations-preparing-your-business-for-future-growth-and-investment"
 coverImage: "https://i.ibb.co/Nd7shgQc/7db64c5568e0.jpg"

@@ -105,7 +105,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-[rgba(99,102,241,0.1)] pt-6 sm:pt-8 text-center">
           <p className="text-muted-foreground responsive-text-xs font-body">
-            © 2025 Foundterra. All rights reserved.
+            © 2026 Foundterra. All rights reserved.
           </p>
         </div>
       </div>
