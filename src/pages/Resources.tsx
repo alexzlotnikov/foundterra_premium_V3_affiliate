@@ -79,7 +79,7 @@ const Resources = () => {
       title: "Accelerators Database",
       description: "Find the right accelerator program for your startup",
       icon: Rocket,
-      link: "/resources/accelerators-database"
+      link: "https://docs.google.com/spreadsheets/d/12AV2yMV2QHu52WBMNA5Af6UMXZDxuW6R84HIzvUm68c/edit?usp=sharing"
     },
     {
       title: "Investors Investing in Israel",
