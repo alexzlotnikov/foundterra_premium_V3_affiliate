@@ -1,0 +1,745 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title> Early Traction Metrics that matter</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="291b63eb-e2cc-802a-909a-fa8f200a7c3e" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">⏫</span></div><h1 class="page-title" dir="auto"> Early Traction Metrics that matter</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8030-bf81-cb3da2899b72" class="">What investors really want to see at Pre-Seed &amp; Seed stages</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80b0-ae1c-f097f827fd0a" class="">The right KPIs tell that story. Below is a detailed breakdown of the metrics investors actually care about, how to measure them, what good looks like at each stage, and how to present them.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-805e-9676-f22c3a5ebace"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-808a-9bbf-c43d9be43b32" class="">📈 1. Core Revenue &amp; Growth Metrics</h2></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8015-8f32-e29b52c27794" class="">💰 Monthly Recurring Revenue (MRR) / Annual Recurring Revenue (ARR)</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80d9-b33f-eb1a2e844bf5" class=""><strong>Definition / formula:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8003-9204-d68663f964c0" class="bulleted-list"><li style="list-style-type:disc">MRR = total recurring revenue from all active customers per month</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-800e-b8ef-e3707559cacf" class="bulleted-list"><li style="list-style-type:disc">ARR = MRR × 12</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80ae-a938-f94687e83116" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8035-8e86-e1e21b3d032d" class="">Investors love MRR and ARR because they show consistent, predictable revenue and help benchmark your growth potential.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80a2-a388-c35fcbdebfa7" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-803d-9f56-e279a18abc6d" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> Evidence of early customers or pilot revenue ($1k–$5k MRR is enough if growth trend is visible).</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8039-977d-ce6c66d7ebc9" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> Repeatable revenue and acceleration, typically $10k–$100k+ MRR with steady 10–30% MoM growth.</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8052-b620-e47cb539e1ad" class=""><strong>Improve it:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8089-ab37-e8b9b9adf94a" class="">Turn pilots into paid pilots, document proof of customer value, and keep the trend line up and to the right.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-80f7-82c5-ded39e85d01b"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8045-b122-ca60fe1ccb35" class="">📊 Growth Rate (Month-over-Month or Year-over-Year)</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80ea-8291-c091bddfdbeb" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80ad-92eb-c63a8f9f046d" class="">(MRR this month − MRR last month) ÷ MRR last month × 100</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80db-b58f-d85dae54794f" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8051-ae8d-c58eafcb7b36" class="">Momentum is more important than absolute numbers. Investors care about consistent positive trends.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80a2-9311-c08ca0ceddd2" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-805f-9c7c-f7d5697b8e2f" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> Any steady upward movement with clear reasoning.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8001-956d-c9d6c4d4e2f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> Sustained 10–30% MoM growth depending on model.</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8072-83df-d9409d655892" class=""><strong>Improve it:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80de-9c00-c94af4dd0f7c" class="">Optimize marketing channels, refine onboarding, and double down on what drives conversions.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8077-ab48-fe618d583445"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-80c1-8163-d7d0443f0d53" class="">👥 2. Customer Metrics &amp; Unit Economics</h2></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8001-bf55-cb1c49b1b39c" class="">🎯 Customer Acquisition Cost (CAC)</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80f7-9a19-f7b669bc05e6" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80a1-b954-ff9eece9fcf3" class="">(Total Sales + Marketing Spend) ÷ New Customers Acquired</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-808d-8297-d774b0c2f783" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8005-b591-c8f797e65ca4" class="">Shows how efficient your growth is and whether scaling is sustainable.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8094-ae5d-f4e89f0e97a5" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8099-8c4b-d30ec303cc74" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> CAC can fluctuate. Show early signs of cost efficiency and understanding of your channels.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-802f-b20c-fca21a33c67b" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> CAC payback ideally &lt; 12 months, with a healthy LTV:CAC ratio.</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-808a-9f33-ef95c552c5a5" class=""><strong>Improve it:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80b3-bef4-ef68f4bbc9cf" class="">Refine targeting, improve organic channels, and track CAC by acquisition source.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-80c9-a0eb-cdba36e90225"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80b0-ba68-f69a981ad1d0" class="">💎 Lifetime Value (LTV)</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8016-bcd0-d5cd96c61c63" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8065-9e4a-c7633442c5a1" class="">(Average Revenue Per Account × Gross Margin %) ÷ Churn Rate</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8086-a22b-c41ab0a6aa6e" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8047-8161-c809923bba4f" class="">Reveals the total gross profit per customer and helps investors evaluate profitability potential.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8065-b422-f3a7c45250f6" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8059-a8ab-d1364cc0210c" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> LTV greater than CAC, even if early.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8081-8b99-daef4286bb47" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> LTV:CAC ≈ 3:1 is a solid benchmark for SaaS.</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8048-8822-e60d0ddad798" class=""><strong>Improve it:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80f2-a0e5-cf0dbc191e0f" class="">Increase retention, raise prices, improve upsells, and optimize customer success.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-80d9-bac0-de1b9ff4dd03"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8058-9a6f-f2ffcd7dda79" class="">⚖️ LTV:CAC Ratio</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-805f-9423-f0e320dbfe66" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80b9-9723-efdc535feea3" class="">LTV ÷ CAC</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-804c-95bf-e1fa929b4409" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80b3-94e5-e957a860b970" class="">Quick snapshot of your profitability per customer.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8092-ab35-db9c465ff734" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8034-b01f-fbe7adf72d39" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> Directionally positive (LTV &gt; CAC).</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8077-a2e2-fe3bddb20b36" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> 3:1 ratio is desirable.</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8008-9461-da2ae99be0eb" class=""><strong>Improve it:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8030-9cd5-c093312678de" class="">Focus on churn reduction and pricing optimization.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-80e6-b91b-ff5a8b2a71a4"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80d4-93de-c2c82f227e31" class="">💵 Payback Period</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8032-ad62-e63b1307259a" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-801e-b553-dbdfde0ce22c" class="">CAC ÷ (ARPA × Gross Margin %)</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80b0-8797-d50171e64d0e" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8088-ab09-fe9ff13f9d5a" class="">Shows how fast you recover acquisition cost.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8038-8dbb-d8a2398c4b01" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8041-a55e-f5d5ef7e4f4f" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> Clear path to improvement.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80de-986e-f7432482cc57" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> 6–12 month payback preferred.</li></ul></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-807e-856e-c1e694b09e17"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-807f-9a26-fa9b3f54d265" class="">🔁 3. Retention &amp; Engagement Metrics</h2></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80c2-bf24-ff5f87120966" class="">🔒 Churn Rate</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80ce-bb8f-df0fa8dcb8a5" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80fb-968e-efe4568f3ba4" class="">(Customers lost ÷ Customers at start of month) × 100</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8004-a143-df91b82ea548" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8077-bb56-e1e0b92377e1" class="">High churn kills growth. Investors watch retention as a signal of product-market fit.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8088-bc70-dbd8cb583076" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80dc-8532-c15a2a9a9d79" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> Show improving cohort retention.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8093-9b23-c7fc5117333d" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> SaaS under 3% monthly churn is solid.</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8019-a7e6-cf348ba89b5e" class=""><strong>Improve it:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-808c-8e61-d4378e10c3a9" class="">Better onboarding, proactive support, and customer feedback loops.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-80da-ba7d-fa78481064e5"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80e5-83f2-f3ed2076485c" class="">⚡ Activation Rate</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-807c-a2a5-fe4e50a8493b" class=""><strong>Definition:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8025-a9a2-d6991f78c788" class="">% of new users who reach your “aha” moment (first key value event).</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-803a-83a7-f1b1c18aaa89" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8065-9f93-e743323d991f" class="">Shows how effectively users experience value early.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-803f-a698-e720dc1f358f" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80ec-ad30-e783e37669c6" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> Prove people can find value fast.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8082-b7ac-f443fe84ccef" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> Measurable improvement and strong link to retention.</li></ul></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8067-a398-dcfd9f66298a"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8072-ba31-dc640203a141" class="">📆 DAU/MAU Ratio (Stickiness)</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8048-8d2b-e22a029cf6a4" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-805b-a66f-e7385b13a68f" class="">Daily Active Users ÷ Monthly Active Users</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-803b-ab93-e752729919d2" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80d4-909f-c352402c082c" class="">Higher ratio = higher engagement.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80a8-9c98-d15f61a6c4c0" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-807e-af1b-de78e5cf9f09" class="bulleted-list"><li style="list-style-type:disc"><strong>Consumer products:</strong> &gt;20–30% is healthy.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80f7-a66e-c6d5d38fae65" class="bulleted-list"><li style="list-style-type:disc"><strong>B2B:</strong> Depends on usage pattern (daily vs weekly use).</li></ul></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8081-8870-d2891236cca8"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-802e-91d0-f4b3e323a384" class="">⚙️ 4. Funnel &amp; Conversion Metrics</h2></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80b7-856f-fac332a741e6" class="">🧭 Conversion Rates</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8059-bc4a-db73dc9bd497" class=""><strong>Definition:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-807b-9d02-e3428e9086f8" class="">% of users who move from one stage to another (Signup → Activated → Paid).</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-801e-a70f-c83f0fb519f1" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-800a-87e0-f45a10a19bf6" class="">Shows funnel efficiency and whether users are convinced by your product.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80c1-918b-d830f69e2baf" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80e7-bf75-d15e40f73565" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> Basic funnel clarity with improving trend.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80a8-aa79-ccaa5683cb87" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> Proven repeatable conversion path.</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80e5-b324-dfab0b8d3b41" class=""><strong>Improve it:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80fe-ac19-e05f135ba597" class="">Simplify onboarding, refine messaging, and test pricing tiers.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-801f-b53d-c8a555e180c3"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80c1-aa18-c8194996cf62" class="">⏩ Funnel Velocity &amp; Cohort Analysis</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80f3-b07b-c1505d37c000" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-808d-b257-cc2cfd9c7d8d" class="">Shows how quickly leads move through your funnel and whether retention improves over time.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8011-96f0-f17038a54114" class=""><strong>Tip:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-800a-9301-c91c374a6d16" class="">Use a cohort retention heatmap to visualize improvement month by month.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8023-b970-fbf268a4175a"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-8016-8fe0-e8b1d3e4b65a" class="">💸 5. Revenue Composition &amp; Quality</h2></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8068-b9dd-c102bcc9ee4a" class="">🧮 Revenue Concentration</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80a7-b438-ef701f59523b" class=""><strong>Definition:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8002-af91-e885edcb1cc9" class="">% of revenue from top 1–5 customers.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8064-8047-f9133148cb52" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8062-9ce0-fcdda874d83f" class="">Heavy reliance on one or two customers = risk.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80e8-835c-f593fc036df5" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80d5-ab2b-f7a3dc3936ed" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-Seed:</strong> Some concentration is okay. Show pipeline to diversify.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80b5-8d48-d1366e30ef8b" class="bulleted-list"><li style="list-style-type:disc"><strong>Seed:</strong> Expect broader revenue distribution.</li></ul></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-803e-98a6-e1ba48a839a7"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80e3-846a-da21303b8390" class="">📦 Gross Margin</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80f0-a949-f9b1a0cb6c6d" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8031-b097-eba5f3598710" class="">(Revenue − Cost of Goods Sold) ÷ Revenue</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-808c-a351-cf283b9e7d12" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80a7-8766-f825e73d3724" class="">Determines scalability and profitability.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8076-b2cb-f034cfd8d205" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-808f-aa44-d42aba348199" class="bulleted-list"><li style="list-style-type:disc">SaaS: 70–80%+</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8052-88b2-e6341ca4f25f" class="bulleted-list"><li style="list-style-type:disc">Marketplaces / D2C: Lower, but improving trend is key</li></ul></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-809a-8163-f9eeedcdd9c2"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-8078-85e2-c65e8e4f4249" class="">🌱 6. Pre-Revenue Traction Signals</h2></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-800c-a90d-d9fe15e8a7df" class="">If you’re still pre-revenue, you can still show strong traction:</p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8072-bd65-ec9cafa15b26" class="bulleted-list"><li style="list-style-type:disc">Pilot customers or LOIs</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8010-ac56-d95d8b911c73" class="bulleted-list"><li style="list-style-type:disc">Waitlist signups with intent surveys</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-805d-bd86-c35c9339f4e1" class="bulleted-list"><li style="list-style-type:disc">Beta user retention (D7/D30)</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8014-a291-e3254a5f0453" class="bulleted-list"><li style="list-style-type:disc">Partnerships or distribution deals</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8046-9e40-ef85907b691a" class="bulleted-list"><li style="list-style-type:disc">Engaged community (open rates, Discord, Slack, etc.)</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80b0-8e44-c8f635a1244f" class="bulleted-list"><li style="list-style-type:disc">Early willingness-to-pay data</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8051-aa2c-f84f940d9d5c" class=""><strong>Tip:</strong> Document everything — pilots, feedback, testimonials, learnings.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-80d6-a555-cdef5a34a54b"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-801d-9e26-dd387d70f27a" class="">🧩 7. Model-Specific Metrics</h2></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80f7-961a-dd7b3821013e" class="">🧠 B2B / SaaS</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80f9-8e5b-c87a0c47907c" class="">MRR, ARR, CAC, LTV, churn, payback, gross margin, NRR, sales cycle length.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8059-82c3-d2af57d52778" class=""><strong>Investors want:</strong> Proof of paying customers, improving unit economics, and repeatable pipeline.</p></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8020-bdab-cffc02669497" class="">🛍️ Marketplaces</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-804e-ac78-cd9cd0605f5d" class="">GMV, take rate, liquidity, supply/demand balance, CAC on both sides.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-809f-81de-f868bb304cbc" class=""><strong>Investors want:</strong> Clear network effects and healthy supply-demand loop.</p></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80bb-91b5-e4f834d35dd0" class="">📱 Consumer Apps</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80a2-9549-e4a186bcf824" class="">DAU/MAU, retention (D1, D7, D30), CAC per install, LTV, virality.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80c0-a758-ff9949e0107f" class=""><strong>Investors want:</strong> Stickiness, organic growth, and scalable paid acquisition.</p></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80f1-b1e7-d341bbe868eb" class="">📦 D2C / E-Commerce</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8027-a30f-c65c042eba77" class="">Repeat purchase rate, AOV, gross margin, CAC, LTV.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8066-87e8-c4900252920d" class=""><strong>Investors want:</strong> Repeat buyers and improving margin structure.</p></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80cc-9b3d-cda75af20e2f" class="">⚙️ Hardware / Deep Tech</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-802a-932d-f445ecf9afb5" class="">Preorders, partnerships, regulatory milestones, production readiness.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8048-a1f2-e9cddceb71b5" class=""><strong>Investors want:</strong> Technical validation and customer interest.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8047-acfe-d77fd6370eb9"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-8092-852c-da879362796e" class="">💰 8. Financial Health Metrics</h2></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-8036-8d46-f7cba7753da7" class="">🔥 Burn Rate &amp; Runway</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8073-8a17-ffc58d7618ea" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8088-b233-f42c7ffce912" class="">Shows how long you can operate before running out of cash.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-809f-a6d7-f8dcca7db277" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80c0-995d-e1f83e126c31" class="bulleted-list"><li style="list-style-type:disc">12–18 months of runway after raise.</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-807a-805e-ca1407f52df5" class="bulleted-list"><li style="list-style-type:disc">Clear plan on how new capital will improve key KPIs.</li></ul></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8088-a7fe-ea8f507b2401"/></div><div style="display:contents" dir="auto"><h3 id="291b63eb-e2cc-80b3-9f99-cda70cae3157" class="">♻️ Net Revenue Retention (NRR)</h3></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80ae-8bde-f3b34d96c4aa" class=""><strong>Formula:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8060-9b4d-cc3462c462cf" class="">(Starting MRR + Expansion − Contraction − Churn) ÷ Starting MRR</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80e2-b470-f7d102e95dcb" class=""><strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-805b-a66b-c3f6d715322d" class="">Shows expansion revenue from existing customers.</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8045-ac4d-e6a2757b3753" class=""><strong>Expectations:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80ee-9c65-f8bc81f19ac6" class="">NRR &gt; 100% is strong for SaaS at seed stage.</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-806d-8852-c0346a6036e2"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-801e-a6dd-d5d26857d0cc" class="">🧠 9. How Investors Interpret Metrics</h2></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-806c-a8fc-cd7d45c45177" class="">Investors focus on:</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80f6-bb7b-db1748b1fa4c" class="">✅ <strong>Momentum</strong> — Are numbers improving consistently?</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8076-b29c-d7414b9db8a9" class="">✅ <strong>Repeatability</strong> — Can you acquire and retain predictably?</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8036-a2d9-c3aa4cebe4ba" class="">✅ <strong>Unit economics</strong> — Do CAC and LTV make sense?</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80c3-b3dd-cc78d1ef9342" class="">✅ <strong>Market potential</strong> — Can margins and pricing scale?</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-801d-8191-d172dd0224df" class="">✅ <strong>Founder efficiency</strong> — Are you learning quickly and adapting?</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8000-ad04-fb620771acca"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-80e3-a3f3-fc96a6862e43" class="">📊 10. How to Present Metrics in a Pitch</h2></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-802c-8d73-e0806152cb20" class=""><strong>Recommended traction slide layout:</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-806e-88e1-ee5ff516afef" class="bulleted-list"><li style="list-style-type:disc">Top: 3–4 headline KPIs (MRR, MoM growth, customers, margin)</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-8092-ae56-e501859b3a4a" class="bulleted-list"><li style="list-style-type:disc">Middle: Line chart showing MRR trend</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-807b-b6e0-c7295b08ca38" class="bulleted-list"><li style="list-style-type:disc">Bottom left: CAC, LTV, payback</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80cd-a1f6-e76131157979" class="bulleted-list"><li style="list-style-type:disc">Bottom right: Key customers or pilot logos</li></ul></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-807f-af57-c9c137d070d8" class=""><strong>Bonus slides (appendix):</strong></p></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-800c-b5ef-f13309cf9289" class="bulleted-list"><li style="list-style-type:disc">Cohort retention heatmap</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-80e5-ba24-e18cdaadb5b6" class="bulleted-list"><li style="list-style-type:disc">Unit economics table</li></ul></div><div style="display:contents" dir="auto"><ul id="291b63eb-e2cc-808b-853e-d56ecd443693" class="bulleted-list"><li style="list-style-type:disc">CAC by channel breakdown</li></ul></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8047-ab40-dff7fa146f95"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-80d6-81d3-dfc7b135ef35" class="">⚠️ 11. Common Mistakes to Avoid</h2></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80ce-9257-c7e7cddaa2d9" class="">❌ Vanity metrics (downloads, followers, page views without context)</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8081-9e02-d5ad360fa637" class="">❌ Ignoring churn and retention</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80c0-8c53-ee5480ea9ab1" class="">❌ Over-optimistic LTV assumptions</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-801a-b1af-cb95ba4ee083" class="">❌ Lack of segmentation or attribution clarity</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8091-9ed9-c4b23e951d6f" class="">❌ Missing context (no explanation for metric changes)</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-805c-a033-f94efbc980a7"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-806c-a857-ebd6d1321a56" class="">⚙️ 12. Fast Experiments to Improve KPIs</h2></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8012-a3db-e0bee76227ba" class="">✅ Simplify onboarding to boost activation</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80e1-b7f8-d550d2c50d0a" class="">✅ Improve messaging for conversions</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80f0-b5b5-d32903c4e125" class="">✅ Run pricing A/B tests</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8031-8088-ec88373c7bcb" class="">✅ Reduce churn with customer success check-ins</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-806e-8547-e709d9eb1d99" class="">✅ Optimize organic content to reduce CAC</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8040-b03e-ccad46c7b635"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-80a8-94c1-c70044a25269" class="">📏 13. Benchmarks Summary</h2></div><div style="display:contents" dir="ltr"><table id="291b63eb-e2cc-8088-9344-ecf05546741f" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-8002-a55f-f768792f2feb"><th id=":\jv" class="simple-table-header-color simple-table-header">Metric</th><th id="YW@L" class="simple-table-header-color simple-table-header">Pre-Seed</th><th id="oy[P" class="simple-table-header-color simple-table-header">Seed</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-809c-a7b5-d644a4c5fc65"><td id=":\jv" class="">MRR</td><td id="YW@L" class="">$1k–$5k+ or early pilots</td><td id="oy[P" class="">$10k–$100k+</td></tr></div><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-8067-b566-f46e78efec01"><td id=":\jv" class="">MoM Growth</td><td id="YW@L" class="">Upward trend</td><td id="oy[P" class="">10–30%</td></tr></div><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-80c1-96d1-fa1f8d9b5128"><td id=":\jv" class="">CAC</td><td id="YW@L" class="">Improving trend</td><td id="oy[P" class="">Payback ≤ 12 mo</td></tr></div><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-804d-8cce-fdb0c4c9437e"><td id=":\jv" class="">LTV:CAC</td><td id="YW@L" class="">&gt;1:1 and improving</td><td id="oy[P" class="">≈3:1</td></tr></div><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-80fd-b018-c5035da1944d"><td id=":\jv" class="">NRR</td><td id="YW@L" class="">N/A</td><td id="oy[P" class="">&gt;100% ideal</td></tr></div><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-80ce-a3ca-e67e2fdc8cb5"><td id=":\jv" class="">Churn</td><td id="YW@L" class="">Improving cohorts</td><td id="oy[P" class="">&lt;3% monthly</td></tr></div><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-8039-b06b-eccfde8c19d9"><td id=":\jv" class="">DAU/MAU</td><td id="YW@L" class="">N/A</td><td id="oy[P" class="">20–30%+ consumer</td></tr></div><div style="display:contents" dir="ltr"><tr id="291b63eb-e2cc-80d3-bb89-d113200a186b"><td id=":\jv" class="">Payback</td><td id="YW@L" class="">Transparent plan</td><td id="oy[P" class="">&lt;12 months</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-8010-8105-ecee7edc1c7d"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-804f-897b-d0333f04ba8f" class="">📋 14. Example Narratives</h2></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8076-a8be-d4fde63c5fcb" class=""><strong>If you have paying customers:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8000-bbc7-d94247f1e5a2" class="">“We launched in March. MRR grew from $2.4k to $18k with 28% MoM growth. CAC is $1,000, ARPA $1,200, gross margin 80%. Our payback is 9 months and LTV:CAC ≈ 21. Growth driven by organic content and outbound SDRs.”</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-800f-896e-fb27140a48fa" class=""><strong>If you’re pre-revenue:</strong></p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8065-a2c3-c4984a4476fb" class="">“We have two enterprise pilots, 1,200 waitlist leads, 42% D30 retention, and 35% of testers indicate willingness to pay. One pilot converted to a paid $12k trial, validating our pricing and demand.”</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-80dc-9fef-ed26455d178a"/></div><div style="display:contents" dir="auto"><h2 id="291b63eb-e2cc-8028-a4b5-f7c8fd4e8374" class="">🧾 15. Final Checklist</h2></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80dd-9b10-f44425fe04a8" class="">☑️ 1 traction slide (3–4 key metrics + trend)</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-805c-a0a0-ffd9b9c79151" class="">☑️ Cohort heatmap (retention)</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80bc-8e16-d1c37c916433" class="">☑️ Unit economics table (CAC, LTV, payback)</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8087-b350-c69b471282f2" class="">☑️ Customer logos or pilot list</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8016-a7aa-c79f334cb8c9" class="">☑️ Channel breakdown</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8019-82c5-c338735d07c5" class="">☑️ Burn and runway</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8047-ad76-fa93268b8370" class="">☑️ Honest notes on churn and concentration</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-80cc-9165-ea0370031fc4" class="">☑️ Backup data spreadsheet</p></div><div style="display:contents" dir="auto"><hr id="291b63eb-e2cc-809d-b167-f607084ced19"/></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8086-8522-c9ff79714043" class="">
+</p></div><div style="display:contents" dir="auto"><p id="291b63eb-e2cc-8097-8b0a-c99fdffefc4c" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2c8b63eb-e2cc-80eb-9140-ffdadd0057cd" class="image" style="text-align:left"><a href="banner_notion.png"><img style="width:1056px" src="banner_notion.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2aab63eb-e2cc-806f-988a-e21852cf0a98" class="">Our contacts:</p></div><div style="display:contents" dir="auto"><p id="2aab63eb-e2cc-80da-97b6-d63ff1e9f34e" class=""><a href="http://www.foundterra.com">www.foundterra.com</a> </p></div><div style="display:contents" dir="auto"><p id="2aab63eb-e2cc-80ac-9912-c44f190e4015" class="">info@foundterra.com</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

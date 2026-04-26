@@ -1,0 +1,743 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Investors Update System</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2e2b63eb-e2cc-806f-9548-fcbffe40dbde" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📩</span></div><h1 class="page-title" dir="auto">Investors Update System</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="2e2b63eb-e2cc-801d-b9ca-c5fab3da051c" class="">⚙️ Logistics: How &amp; When to Send</h1></div><div style="display:contents" dir="auto"><hr id="2e2b63eb-e2cc-80d3-b289-c71441001eb1"/></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-8046-88d4-dc813f950ac2" class="bulleted-list"><li style="list-style-type:disc"><strong>Format:</strong> Plain text email. No heavy graphics. It must be readable on a phone in 30 seconds.</li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80bd-81c1-c5ffb1f24c55" class="bulleted-list"><li style="list-style-type:disc"><strong>Cadence:</strong><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80c5-a49d-fd77e42cb9c0" class="bulleted-list"><li style="list-style-type:circle"><em>Early Stage (0–36 months):</em> <strong>Monthly</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80f5-8204-f02902cbdb8e" class="bulleted-list"><li style="list-style-type:circle"><em>Growth Stage:</em> <strong>Quarterly</strong>.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-8076-811c-c16f367c26ac" class="bulleted-list"><li style="list-style-type:disc"><strong>Timing:</strong> Send <strong>Tuesday, Wednesday, or Thursday mornings</strong>.<div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-804a-a74b-e5884abcba5b" class="bulleted-list"><li style="list-style-type:circle"><em>Avoid:</em> Mondays (Catch-up mode) and Fridays (Wind-down mode).</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-801d-b2cf-d9551c0d9dc2" class="bulleted-list"><li style="list-style-type:disc"><strong>Subject Line:</strong> Consistent format for easy searchability.<div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80fe-949e-ddfac2884ca4" class="bulleted-list"><li style="list-style-type:circle">[Company Name] Investor Update — [Month/Year]</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2e2b63eb-e2cc-80ae-8763-d71c8079a98d"/></div><div style="display:contents" dir="auto"><h2 id="2e2b63eb-e2cc-80f7-82ae-e3e825a03881" class="">🧠 Key Principles</h2></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-8055-87ec-e2664fc0bbf4" class="">To master investor updates, you must understand the psychology behind them. Investors receive dozens of updates a month. The ones they read—and the founders they back again—adhere to these three mental models.</p></div><div style="display:contents" dir="auto"><hr id="2e2b63eb-e2cc-80ca-b4cc-f79349ac0eb4"/></div><div style="display:contents" dir="auto"><h2 id="2e2b63eb-e2cc-8007-bf38-dbbd7b2ac4a9" class="">1. Radical Transparency</h2></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-807a-b123-df52641ae255" class=""><strong>The Rule:</strong> Bad news ages poorly. Never &quot;spin&quot; the truth to make things look better.</p></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-8065-a72e-d2eec22dae94" class=""><strong>The Psychology:</strong> Investors know startups are messy. If you claim everything is &quot;amazing&quot; for six months and then suddenly run out of cash, you look incompetent or dishonest. If you share the struggle early, you look like a leader who identifies problems and asks for help.</p></div><div style="display:contents" dir="auto"><h3 id="2e2b63eb-e2cc-80e7-a153-cb194224e89a" class="">❌ The &quot;Sugar-Coated&quot; Approach (Bad)</h3></div><div style="display:contents" dir="auto"><blockquote id="2e2b63eb-e2cc-8008-af2c-e58e40328850" class="">&quot;We are currently optimizing our sales process to align better with enterprise needs. Revenue is flat as we focus on quality over quantity.&quot;</blockquote></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-8069-b346-c6deb4aed89a" class="bulleted-list"><li style="list-style-type:disc"><strong>Investor Reaction:</strong> &quot;This sounds like fluff. They are hiding something. I don&#x27;t trust the metrics.&quot;</li></ul></div><div style="display:contents" dir="auto"><h3 id="2e2b63eb-e2cc-80a2-a1ec-fd8830063da3" class="">✅ The &quot;Radically Transparent&quot; Approach (Good)</h3></div><div style="display:contents" dir="auto"><blockquote id="2e2b63eb-e2cc-8014-b9ef-ed4fec264054" class="">&quot;We missed our Q3 revenue target by 20%. Two major enterprise deals fell through at the contract stage because we lack SOC-2 compliance.<div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-8008-8e71-e68278058797" class=""><strong>The Fix:</strong> We have paused outbound sales for 3 weeks to prioritize SOC-2 certification so this doesn&#x27;t happen again.&quot;</p></div></blockquote></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80ba-bb8b-e2c7477af6a3" class="bulleted-list"><li style="list-style-type:disc"><strong>Investor Reaction:</strong> &quot;Okay, that hurts, but the founder identified the root cause and is fixing it. I know a compliance auditor who can help speed this up.&quot;</li></ul></div><div style="display:contents" dir="auto"><hr id="2e2b63eb-e2cc-80cc-8422-f075c7fa1a03"/></div><div style="display:contents" dir="auto"><h2 id="2e2b63eb-e2cc-803f-b6c6-fcb052fd310c" class="">2. The &quot;No Threes&quot; Rule</h2></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-8040-a5fb-d82da3965426" class=""><strong>The Rule:</strong> When rating your company performance (Team, Product, Growth) on a 1-to-5 scale, <strong>you are strictly prohibited from using the number 3.</strong></p></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-80b0-9be9-fe3cd800d64d" class=""><strong>The Psychology:</strong> A &quot;3&quot; is the safe zone. It means &quot;fine&quot; or &quot;average.&quot; In a startup, &quot;average&quot; means you are dying slowly. By banning 3, you force yourself to make a binary decision: <strong>Is this working (4/5) or is it broken (1/2)?</strong></p></div><div style="display:contents" dir="auto"><h3 id="2e2b63eb-e2cc-802e-bca0-dcc6b8438724" class="">❌ The &quot;Safe 3&quot; (Bad)</h3></div><div style="display:contents" dir="auto"><blockquote id="2e2b63eb-e2cc-804a-84f2-d58004163153" class="">Category: Engineering Team — Score: 3/5<div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-8030-b856-f327ec9ad564" class=""><em>Comment:</em> &quot;The team is working hard, shipping features at a decent pace.&quot;</p></div></blockquote></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-8060-9c65-c627e67fe863" class="bulleted-list"><li style="list-style-type:disc"><strong>Why it fails:</strong> This tells the investor nothing. It hides the fact that you might be burning out or shipping buggy code.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2e2b63eb-e2cc-8050-81e4-edb2d7d650cf" class="">✅ The &quot;Forced Decision&quot; (Good)</h3></div><div style="display:contents" dir="auto"><blockquote id="2e2b63eb-e2cc-807b-b353-f8398cb8cba3" class="">Category: Engineering Team — Score: 2/5<div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-80fb-8765-cc8ee5d0ea92" class=""><em>Comment:</em> &quot;We are shipping features, but our bug rate has increased by 15% this month. We are accruing technical debt. I had to rate this a 2 because we need to hire a senior QA lead immediately.&quot;</p></div></blockquote></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-8045-9430-e102043ab91d" class="bulleted-list"><li style="list-style-type:disc"><strong>Why it works:</strong> It forces you to admit that &quot;decent&quot; isn&#x27;t good enough and creates an immediate action item (Hire QA).</li></ul></div><div style="display:contents" dir="auto"><hr id="2e2b63eb-e2cc-8068-8515-cf0956def8ca"/></div><div style="display:contents" dir="auto"><h2 id="2e2b63eb-e2cc-803e-ae9f-ccbc59f7b975" class="">3. Closing the Loop</h2></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-806a-b6ff-d8333f357c3c" class=""><strong>The Rule:</strong> Treat your updates like a Netflix series, not a collection of random postcards. If you introduce a plot point (a problem) in Episode 1, you must resolve it in Episode 2.</p></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-8060-927c-f3645ce86fa8" class=""><strong>The Psychology:</strong> Investors track patterns. If you mention a &quot;critical hiring crisis&quot; in January and then never mention it again in February, the investor assumes you are disorganized or avoiding the issue.</p></div><div style="display:contents" dir="auto"><h3 id="2e2b63eb-e2cc-80f4-bc8d-ecf7476f0919" class="">❌ The &quot;Open Loop&quot; (Bad)</h3></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80d2-a4c9-ef0de1098bda" class="bulleted-list"><li style="list-style-type:disc"><strong>January Update:</strong> &quot;Lowlight: Our Head of Marketing quit unexpectedly.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80e6-863a-da44488858b0" class="bulleted-list"><li style="list-style-type:disc"><strong>February Update:</strong> &quot;Highlight: We launched a new TikTok campaign!&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80f7-b8e8-d41edbffee2d" class="bulleted-list"><li style="list-style-type:disc"><strong>March Update:</strong> &quot;Focus: Building out the sales team.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-8088-a4af-f73fe59d9034" class="bulleted-list"><li style="list-style-type:disc"><strong>Investor Thought:</strong> &quot;Wait... who is running marketing? Did they ever replace that person? Is the TikTok campaign running itself?&quot;</li></ul></div><div style="display:contents" dir="auto"><h3 id="2e2b63eb-e2cc-806a-9e8c-d1290a2cc487" class="">✅ The &quot;Closed Loop&quot; (Good)</h3></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80b9-ab9f-c57130de1d83" class="bulleted-list"><li style="list-style-type:disc"><strong>January Update:</strong> &quot;Lowlight: Our Head of Marketing quit. We are stepping in to cover, but need a replacement ASAP.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80bf-8669-d4ffd015af15" class="bulleted-list"><li style="list-style-type:disc"><strong>February Update:</strong> &quot;Update on Marketing Hire: We interviewed 4 candidates but haven&#x27;t found a fit. I am still acting as interim lead. Ideally, we close this loop by March.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80cf-9fad-d51efe62178b" class="bulleted-list"><li style="list-style-type:disc"><strong>March Update:</strong> &quot;Closed Loop: Thrilled to announce we hired Sarah (ex-Airbnb) as Head of Marketing. She starts Monday.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2e2b63eb-e2cc-80b3-8e77-e306fe28f3af" class="bulleted-list"><li style="list-style-type:disc"><strong>Investor Thought:</strong> &quot;This founder is relentless. They identified a gap, hunted for a solution, and executed.&quot;</li></ul></div><div style="display:contents" dir="auto"><hr id="2e2b63eb-e2cc-807d-a60f-e3e37131a0a6"/></div><div style="display:contents" dir="auto"><h2 id="2e2b63eb-e2cc-804c-befd-faae9ab591e2" class="">📋 The &quot;Gold Standard&quot; Email Template</h2></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-807c-9ff5-f17549290f6e" class=""><strong>Copy and paste this into your email client.</strong></p></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-8056-bebf-dde4ffa0d897" class="">codeText</p></div><div style="display:contents" dir="auto"><p id="2e2b63eb-e2cc-8099-858c-d117270e741f" class=""><code>Subject: [Company Name] Investor Update — [Month/Year] — [Status: e.g., +15% Growth]<br/><br/>Hi Team,<br/><br/>[EXECUTIVE SUMMARY / TL;DR]<br/>• Sentiment: [One sentence on how the month felt — e.g., &quot;Morale is high, but engineering is stretched.&quot;]<br/>• The Big Win: [The single most important achievement this month.]<br/>• The Bottom Line: We have $[Amount] in the bank with [Number] months of runway.<br/><br/>[CORE METRICS &amp; KPIs]<br/>(Keep these identical every month. Do not cherry-pick.)<br/><br/>| Metric | Current Value | MoM Growth |<br/>| :--- | :--- | :--- |<br/>| Revenue (MRR) | $00,000 | +00% |<br/>| Net Burn | $00,000 | -00% |<br/>| Runway | 00 Months | (w/o revenue forecast) |<br/>| Active Users | 0,000 | +00% |<br/>| Churn Rate | 0.0% | -0.0% |<br/><br/>[PERFORMANCE RATINGS (1-5 Scale, NO 3s allowed)]<br/>• Runway: [Score] (Prev: [Score])<br/>• Team: [Score] (Prev: [Score])<br/>• Product: [Score] (Prev: [Score])<br/><br/>[HIGHLIGHTS (The Wins)]<br/>• Win 1: Successfully launched [Feature] which increased retention by [X]%.<br/>• Win 2: Signed a Letter of Intent (LOI) with [Major Client].<br/>• Win 3: Key Hire: [Name] joined as VP of Sales (ex-[Company]).<br/><br/>[LOWLIGHTS (The Challenges)]<br/>(Rule: You must pair every challenge with a solution or specific request for advice.)<br/>• Challenge 1: Sales cycle for enterprise deals is longer than anticipated.<br/>  → Solution: We are refining our demo process and seeking an enterprise sales lead.<br/>• Challenge 2: Experienced a 3-day server outage affecting [X]% of users.<br/>  → Solution: Migrated to [New Provider] and offered credits to affected customers.<br/><br/>[THE ASK (How You Can Help)]<br/>(Be specific. Make it low friction.)<br/>1. Introduction: We need an intro to the Head of Engineering at [Target Company].<br/>   → I have included a forwardable blurb below.<br/>2. Hiring: We are looking for a [Role].<br/>   → Please share this [Link to Job Description].<br/><br/>[CLOSING]<br/>• Shout-outs: Thanks to [Investor Name] for the intro to [Person].<br/>• Focus: Next month is all about [Primary Goal].<br/><br/>Best,<br/><br/>[Founder Name]<br/>[Link to Previous Month&#x27;s Update]</code></p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
