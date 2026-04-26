@@ -73,7 +73,7 @@ const Resources = () => {
       title: "VC List",
       description: "Comprehensive database of venture capital firms",
       icon: DollarSign,
-      link: "https://meteor-lunge-328.notion.site/VC-list-28ab63ebe2cc8031a34fccc94c3bc76b"
+      link: "/resource_pages/vc-list.html"
     },
     {
       title: "Accelerators Database",
