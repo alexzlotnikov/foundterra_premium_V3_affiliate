@@ -1,6 +1,6 @@
 ---
 title: "Pitch Deck Design Mistakes: Avoid 10 Killers & Win Investors"
-date: "2025-10-27"
+date: "2026-10-27"
 excerpt: "An in-depth look at Pitch Deck Design Mistakes: Avoid 10 Killers & Win Investors."
 slug: "pitch-deck-design-mistakes-avoid-10-killers-and-win-investors"
 coverImage: "https://i.ibb.co/RGmLtyJt/460aa35f431e.jpg"

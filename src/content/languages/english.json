@@ -73,7 +73,7 @@
     "closing": ""
   },
   "packages": {
-    "title": "Investor-Ready Fundraising Tiers for Founders",
+    "title": "Complete Fundraising Packages for Founders. Raise with Confidence!",
     "subtitle": "We build your materials using the same logic and scrutiny found in institutional venture firms. Every project starts with a 20-Slide Master Repository designed to answer the questions VCs actually ask.",
     "mostPopular": "Most Popular",
     "discountBanner": "",
@@ -177,7 +177,7 @@
     ]
   },
   "process": {
-    "title": "Financial Model & Fundraising Process for Founders",
+    "title": "Our Process for Founders",
     "subtitle": "",
     "steps": [
       {
@@ -240,16 +240,16 @@
         "cta": "Access Database →"
       },
       {
-        "title": "Fundraising Checklist",
-        "description": "A guide to the documents and data you should have ready for due diligence.",
+        "title": "Accelerators Database",
+        "description": "A curated list of startup accelerators to match your stage and vertical.",
         "icon": "CheckSquare",
-        "cta": "Get Checklist →"
+        "cta": "View Database →"
       },
       {
-        "title": "Traction Metrics Guide",
-        "description": "An overview of the Key Performance Indicators (KPIs) relevant to your business model.",
+        "title": "Viral Startup Launch Checklist",
+        "description": "A practical checklist to plan and execute a high-impact startup launch.",
         "icon": "TrendingUp",
-        "cta": "Learn More →"
+        "cta": "Get Checklist →"
       }
     ],
     "cta": "Access Resources",
@@ -409,7 +409,7 @@
         ]
       }
     ],
-    "copyright": "© 2025 Foundterra. All rights reserved."
+    "copyright": "© 2026 Foundterra. All rights reserved."
   },
   "pages": {
     "contact": {
