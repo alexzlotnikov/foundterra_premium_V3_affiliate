@@ -34,19 +34,70 @@ const guides: Record<string, GuideData> = {
     subtitle: "A practical checklist to prepare for your first fundraising round.",
     sections: [
       {
-        heading: "Legal counsel and company formation",
+        heading: "I. Legal Counsel & Company Formation",
         body: [
-          "Engage legal counsel specializing in startups and form or transition to a Delaware C Corporation.",
-          "Prepare core formation documents (certificate of incorporation, bylaws, and board consents).",
-          "Transfer founder IP into the company and document founder equity with vesting and 83(b) handling when applicable.",
+          "Engage legal counsel specializing in start-ups.",
+          "Form (or transition to) a Delaware C Corporation.",
+          "Prepare and gather company formation documents.",
+          "- [ ] Certificate of Incorporation",
+          "- [ ] Bylaws",
+          "- [ ] Board Consents",
+          "Prepare paperwork to transfer founder IP to the company.",
+          "Document founder equity stakes and vesting schedules.",
+          "File an 83(b) election with the IRS (if applicable).",
         ],
       },
       {
-        heading: "Cap table and fundraising readiness",
+        heading: "II. Capitalization Table & Equity Structure",
         body: [
-          "Keep a clean capitalization table and define a fair founder equity split.",
-          "Set an option pool and standard vesting framework (commonly 4 years with a 1-year cliff).",
-          "Plan your fundraising amount, timeline, and due-diligence readiness before outreach begins.",
+          "Set up a clean Cap Table (accurate ownership record).",
+          "Establish a fair equity split among founders.",
+          "Create an Equity Incentive Plan (e.g., option pool) for team/advisors.",
+          "Implement 4-year vesting with a 1-year cliff for all contributors.",
+          "Ensure shares have transfer restrictions and Right of First Refusal (ROFR).",
+        ],
+      },
+      {
+        heading: "III. Fundraising Strategy & Due Diligence",
+        body: [
+          "Define fundraising plan.",
+          "- [ ] Target amount",
+          "- [ ] Use of funds",
+          "- [ ] Instrument (SAFE / Note / Priced Round)",
+          "Use market-standard docs (e.g., Y Combinator SAFE).",
+          "Avoid investors requesting off-market or complex terms.",
+          "Confirm all investors are Accredited Investors.",
+          "Organize all company records & legal documents for diligence.",
+          "Resolve open items (e.g., pre-round advisor grants) before fundraising.",
+        ],
+      },
+      {
+        heading: "IV. Agreements with Service Providers",
+        body: [
+          "Ensure every employee, advisor, and consultant signs written agreements.",
+          "Use Non-Disclosure & Invention Assignment Agreements (NDIAA) for employees.",
+          "Include work-made-for-hire and IP assignment clauses.",
+          "Add indemnification clauses confirming originality of work.",
+          "Control and document open-source software usage in products.",
+        ],
+      },
+      {
+        heading: "V. Intellectual Property (IP) Protection",
+        body: [
+          "Register copyrights for key materials (software, content, etc.).",
+          "Use proper ©, ™, and ® notices on all assets.",
+          "Secure rights of publicity / model releases for any individual’s likeness.",
+          "Designate a DMCA agent and implement a takedown policy (if applicable).",
+        ],
+      },
+      {
+        heading: "VI. Privacy Policy & Terms of Use",
+        body: [
+          "Draft custom Privacy Policy and Terms of Use (don’t copy others!).",
+          "Privacy Policy: Describe data collection, use, and sharing clearly.",
+          "Privacy Policy: Include opt-out mechanism and data security practices.",
+          "Terms of Use: Define permissible use, warranties, liability limits, governing law.",
+          "Terms of Use: Clarify ownership and license rights for user-generated content.",
         ],
       },
     ],
@@ -56,18 +107,22 @@ const guides: Record<string, GuideData> = {
     subtitle: "A founder-friendly overview for setting up your company correctly.",
     sections: [
       {
-        heading: "Key incorporation takeaways",
+        heading: "Key Takeaways",
         body: [
-          "Delaware C-Corporations are generally preferred for venture-backed startups.",
-          "Strong early planning prevents equity, IP, and legal disputes that slow fundraising.",
-          "International founders can incorporate remotely using a registered agent and proper compliance setup.",
+          "Delaware C-Corporations are preferred for startups seeking venture capital.",
+          "Early planning ensures equity clarity, IP protection, and fundraising readiness.",
+          "International founders can incorporate remotely with a registered agent and virtual mailbox.",
+          "Corporate hygiene matters: cap table discipline, annual reports, and compliance reduce legal risk.",
         ],
       },
       {
-        heading: "Planning checklist",
+        heading: "1) Planning",
         body: [
-          "Review employment/IP constraints, align founder equity and vesting, and formalize founder contributions.",
-          "Work with startup legal and tax advisors so your corporate structure is investor-ready from day one.",
+          "Review employment contracts to ensure startup IP does not conflict with employer obligations.",
+          "Consult startup legal and tax advisors before incorporation decisions.",
+          "Align founder equity splits, vesting schedules, and founder contribution terms early.",
+          "Sign releases for \"lost founders\" so no one can later claim equity from minimal past involvement.",
+          "Choose entity type deliberately (Delaware C-Corp is generally the investor-preferred path).",
         ],
       },
     ],
@@ -77,19 +132,21 @@ const guides: Record<string, GuideData> = {
     subtitle: "A simple outbound playbook for warm-quality cold outreach.",
     sections: [
       {
-        heading: "Technical and research setup",
+        heading: "Phase 1: Technical & Research Setup",
         body: [
-          "Set up sending infrastructure correctly: domain warm-up and SPF/DKIM/DMARC authentication.",
-          "Target only investors aligned with your stage and sector to avoid low-quality mass outreach.",
-          "Use personalization and thesis alignment instead of generic blast emails.",
+          "Industry-average cold reply rates are around 1%, but disciplined execution can materially improve them.",
+          "Use a secondary outreach domain and complete a proper warm-up period before sending at scale.",
+          "Configure SPF, DKIM, and DMARC; without authentication your emails often fail delivery.",
+          "Target investors only where stage and thesis fit is real; generic mass outreach gets blacklisted.",
         ],
       },
       {
-        heading: "Message construction",
+        heading: "Phase 2: Construction Rules",
         body: [
-          "Treat the email like a trailer: your goal is to earn the meeting, not close by email.",
-          "Keep messages concise (roughly 50–150 words), specific, and traction-led.",
-          "Follow up with discipline and meaningful progress updates.",
+          "Treat outreach like a movie trailer: your goal is to earn the meeting, not close by email.",
+          "Keep emails short (about 50–150 words), mobile-friendly, and signal-heavy.",
+          "Use trajectory lines (e.g., growth metrics) rather than vague claims.",
+          "Use low-friction CTAs (brief chat or permission to send deck), and avoid NDA asks in cold outreach.",
         ],
       },
     ],
@@ -99,17 +156,20 @@ const guides: Record<string, GuideData> = {
     subtitle: "A launch checklist focused on momentum and distribution.",
     sections: [
       {
-        heading: "Pre-launch preparation",
+        heading: "I. Pre-Launch Preparation",
         body: [
-          "Build a support circle across customers, peers, operators, and communities before launch day.",
-          "Use a timed engagement cadence (first 5, 15, and 60 minutes) to accelerate early reach.",
-          "Prepare assets in advance, including social proof snippets and alternate visual creatives.",
+          "Objective: maximize visibility, accelerate feedback loops, and compound early traction through coordinated networks.",
+          "Build a support circle (customers, operators, investors, peers, friends) before launch day.",
+          "Use engagement tiers: first 5 minutes, first 15 minutes, and first hour.",
+          "Pre-bake launch assets: social-proof screenshots, alternate thumbnails, objection replies, and supporter blurbs.",
         ],
       },
       {
-        heading: "Execution objective",
+        heading: "II. Launch Execution Playbook",
         body: [
-          "Maximize visibility, collect feedback quickly, and compound traction through coordinated amplification.",
+          "Treat the first launch hours as a compounding window; speed and coordination determine reach.",
+          "Choose a clear archetype: cinematic announcement + lead magnet, or lead-magnet-first value delivery.",
+          "Pre-seed engagement and respond rapidly so momentum is sustained in public channels.",
         ],
       },
     ],
@@ -119,18 +179,20 @@ const guides: Record<string, GuideData> = {
     subtitle: "Key startup metrics to track before and during early fundraising.",
     sections: [
       {
-        heading: "Core revenue and growth metrics",
+        heading: "1) Core Revenue & Growth Metrics",
         body: [
-          "Track MRR/ARR, growth rate, and clear month-over-month momentum.",
-          "At pre-seed, early paid pilots and visible growth trend are often more important than absolute size.",
-          "At seed, investors typically look for repeatable growth and improving efficiency.",
+          "Track MRR and ARR with explicit formulas and definitions.",
+          "Track month-over-month growth rate and show consistent momentum lines.",
+          "Pre-seed: early paid pilots and trend visibility can be enough.",
+          "Seed: repeatable revenue and sustained acceleration are expected.",
         ],
       },
       {
-        heading: "Investor narrative",
+        heading: "2) Customer Metrics & Unit Economics",
         body: [
-          "Present metrics with definitions, formulas, and context—not isolated numbers.",
-          "Show what is improving, what is lagging, and what actions are driving metric movement.",
+          "Track CAC and acquisition efficiency by channel.",
+          "Show realistic payback expectations and healthy LTV:CAC trajectory over time.",
+          "Use metrics context: what changed, why it changed, and what action you took.",
         ],
       },
     ],
@@ -140,18 +202,20 @@ const guides: Record<string, GuideData> = {
     subtitle: "A practical interview structure to uncover real customer pain.",
     sections: [
       {
-        heading: "Interview flow",
+        heading: "1) Opening & Context (2–3 min)",
         body: [
-          "Open with context and rapport building before discussing product ideas.",
-          "Focus on past behavior and specific recent incidents to discover real pain.",
-          "Do not pitch during interviews; your goal is learning, not selling.",
+          "Build rapport, set expectations, and explain you are learning—not selling.",
+          "Capture role context and daily workflow before moving into pain discovery.",
+          "Do not pitch your product during the opening.",
         ],
       },
       {
-        heading: "What to document",
+        heading: "2) Discovery, Current Solutions, and Value",
         body: [
-          "Capture exact customer language, frequency of pain, and current workaround costs.",
-          "Use repeated patterns across interviews to prioritize product decisions.",
+          "Focus on specific past incidents (not hypotheticals) to uncover real pain.",
+          "Ask how they currently solve it, which tools they use, and where frustration is highest.",
+          "Quantify impact: time, money, business risk, and priority level.",
+          "Document exact user language and recurring patterns to guide prioritization.",
         ],
       },
     ],
@@ -161,18 +225,20 @@ const guides: Record<string, GuideData> = {
     subtitle: "Use a clear, defensible way to estimate TAM, SAM, and SOM.",
     sections: [
       {
-        heading: "Bottom-up market sizing",
+        heading: "Key Takeaways",
         body: [
-          "Estimate market size from realistic customer counts multiplied by annual revenue per customer.",
-          "Use bottom-up assumptions investors can validate and challenge.",
-          "Present TAM and long-term revenue potential with transparent logic.",
+          "Big companies are built in big markets; investors test this early.",
+          "Use bottom-up sizing: number of customers × annual revenue per customer.",
+          "Show TAM plus realistic 5+ year revenue projections grounded in assumptions.",
         ],
       },
       {
-        heading: "Why it matters",
+        heading: "How to Estimate Market Size",
         body: [
-          "Investors need confidence that your target market can support venture-scale outcomes.",
-          "Clear and ambitious sizing with explicit assumptions is stronger than over-complicated math.",
+          "Identify target customers, estimate annual value per customer, then multiply.",
+          "Keep assumptions simple and explicit; complexity does not add early credibility.",
+          "Use incremental market expansion logic and explain why your segment is compelling.",
+          "Present both current market opportunity and future market growth where relevant.",
         ],
       },
     ],
@@ -182,18 +248,20 @@ const guides: Record<string, GuideData> = {
     subtitle: "Map competitors and sharpen your differentiation.",
     sections: [
       {
-        heading: "Structured analysis process",
+        heading: "Why Competitive Analysis Matters",
         body: [
-          "Identify direct, indirect, and emerging competitors across your market.",
-          "Collect data from websites, customer reviews, social channels, and industry sources.",
-          "Use SWOT and product/pricing comparisons to identify gaps and strategic opportunities.",
+          "Competitive analysis reveals strengths, weaknesses, and strategic gaps in your market.",
+          "Without structured analysis, startup differentiation and go-to-market choices become weaker.",
         ],
       },
       {
-        heading: "Decision outcomes",
+        heading: "Steps to Conduct Analysis",
         body: [
-          "Translate analysis into clear positioning and messaging decisions.",
-          "Continuously revisit competitor movement as market conditions evolve.",
+          "Identify direct, indirect, and emerging competitors.",
+          "Gather data from websites, reviews, social channels, and industry sources.",
+          "Run SWOT and compare product, pricing, and positioning.",
+          "Evaluate marketing/sales strategy and available financial signals.",
+          "Convert findings into actionable positioning and strategic decisions.",
         ],
       },
     ],
@@ -203,18 +271,21 @@ const guides: Record<string, GuideData> = {
     subtitle: "Track burn and runway so fundraising never becomes reactive.",
     sections: [
       {
-        heading: "Formula and inputs",
+        heading: "What is Cash Runway",
         body: [
-          "Cash runway is the number of months you can operate before cash runs out at current burn.",
-          "Runway = current cash balance ÷ monthly net burn rate.",
-          "Net burn is monthly cash expenses minus monthly cash sales.",
+          "Cash runway is how many months a startup can operate before running out of cash.",
+          "It is essential for timing fundraising and planning spending decisions.",
+          "Early-stage teams usually calculate runway against current burn assumptions.",
         ],
       },
       {
-        heading: "How to use it",
+        heading: "Formula, Example, and Benchmarks",
         body: [
-          "Track runway monthly and run downside scenarios so fundraising starts early, not late.",
-          "Use runway visibility to make hiring, spend, and growth tradeoffs proactively.",
+          "Formula: runway = current cash balance ÷ monthly net burn.",
+          "Gross burn = monthly expenses; net burn = monthly expenses − monthly cash sales.",
+          "Example from the source: $250k cash and $70k net burn gives ~3.6 months of runway.",
+          "Typical target runway is 6–12 months, with some teams aiming for 12–18 months in uncertain markets.",
+          "Extend runway through cost control, hiring pauses, faster collections, and vendor renegotiation.",
         ],
       },
     ],
@@ -224,17 +295,19 @@ const guides: Record<string, GuideData> = {
     subtitle: "Prioritize product work based on impact, effort, and strategy.",
     sections: [
       {
-        heading: "MoSCoW method",
+        heading: "MoSCoW Method",
         body: [
-          "Organize features into Must have, Should have, Could have, and Won't have.",
-          "Use this framework to protect launch-critical scope and avoid roadmap sprawl.",
+          "Classify work into Must have, Should have, Could have, and Won't have.",
+          "Use it to protect launch-critical scope and reduce roadmap sprawl.",
+          "Define core business values and project risks before assigning categories.",
         ],
       },
       {
-        heading: "Practical usage",
+        heading: "Kano & RICE Extensions",
         body: [
-          "Define business values and key risks before scoring feature priority.",
-          "Review and re-prioritize continuously based on real user outcomes.",
+          "Kano helps classify features as Basic, Performance, Delighters, Indifferent, or Reverse.",
+          "RICE provides quantitative scoring using reach, impact, confidence, and effort.",
+          "Review priorities continuously as customer expectations and product context evolve.",
         ],
       },
     ],
@@ -244,17 +317,20 @@ const guides: Record<string, GuideData> = {
     subtitle: "Keep your due-diligence materials investor-ready at all times.",
     sections: [
       {
-        heading: "What a data room is",
+        heading: "What Is a Data Room",
         body: [
-          "A data room is a secure digital space for investor due-diligence documents.",
-          "Its purpose is to validate your deck claims, reduce friction, and build trust through transparency.",
+          "A data room is a secure digital space where investors review diligence materials.",
+          "It validates pitch claims, demonstrates discipline, speeds diligence, and builds trust.",
+          "A strong data room does not just store files—it tells your company story with credibility.",
         ],
       },
       {
-        heading: "Core components",
+        heading: "Core Components Investors Expect",
         body: [
-          "Include key materials across legal, financial, product, and traction categories.",
-          "Maintain clear structure, version control, and up-to-date files so investors can review efficiently.",
+          "Pitch deck (latest version aligned with your narrative).",
+          "Cap table (founders, ESOP, SAFEs/notes, options/warrants).",
+          "Financials (historical P&L, burn/runway, and revenue breakdowns).",
+          "Maintain clean structure, naming, and version control so reviews move quickly.",
         ],
       },
     ],
