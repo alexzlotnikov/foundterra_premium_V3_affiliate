@@ -58,12 +58,6 @@ const Resources = () => {
       link: "/resources/pre-seed-checklist"
     },
     {
-      title: "Startup Incorporation Guide",
-      description: "Complete guide to legally incorporating your startup",
-      icon: BookOpen,
-      link: "/resources/startup-incorporation-guide"
-    },
-    {
       title: "Pitch Deck Templates",
       description: "Professional pitch deck templates to impress investors",
       icon: FileText,
