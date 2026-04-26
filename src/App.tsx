@@ -25,6 +25,7 @@ import PaidConsultation from "./pages/PaidConsultation";
 import MarketSize from "./pages/MarketSize";
 import PitchReview from "./pages/PitchReview";
 import StartupDeals from "./pages/StartupDeals";
+import ResourceGuide from "./pages/ResourceGuide";
 import CookieConsent from "./components/CookieConsent";
 import ErrorBoundary from "./components/ErrorBoundary";
 
@@ -54,6 +55,7 @@ const AppContent = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/:slug" element={<ResourceGuide />} />
           <Route path="/get-resources" element={<GetResources />} />
           <Route path="/redirecting" element={<Redirecting />} />
           <Route path="/saas-metric-auditor" element={<SaasMetricAuditor />} />
