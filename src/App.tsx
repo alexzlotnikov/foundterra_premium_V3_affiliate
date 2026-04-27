@@ -25,6 +25,7 @@ import PaidConsultation from "./pages/PaidConsultation";
 import MarketSize from "./pages/MarketSize";
 import PitchReview from "./pages/PitchReview";
 import StartupDeals from "./pages/StartupDeals";
+import Checkout from "./pages/Checkout";
 import ResourceGuide from "./pages/ResourceGuide";
 import CookieConsent from "./components/CookieConsent";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -48,6 +49,7 @@ const AppContent = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/he" element={<Index />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
@@ -69,6 +71,8 @@ const AppContent = () => {
           <Route path="/he/market-size" element={<MarketSize />} />
           <Route path="/pitch-review" element={<PitchReview />} />
           <Route path="/startup-deals" element={<StartupDeals />} />
+          <Route path="/pay/:checkoutId" element={<Checkout />} />
+          <Route path="/he/pay/:checkoutId" element={<Checkout />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
