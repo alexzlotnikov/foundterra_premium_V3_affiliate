@@ -31,6 +31,7 @@ const FAQ = () => {
         ],
       };
 
+const FAQ = () => {
   return (
     <section id="faq" className="section-padding scroll-mt-24">
       <div className="container-max">

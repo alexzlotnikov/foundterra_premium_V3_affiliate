@@ -32,6 +32,7 @@ const Packages = () => {
         ],
       };
 
+const Packages = () => {
   return (
     <section id="diagnostic" className="section-padding scroll-mt-24">
       <div className="container-max">
