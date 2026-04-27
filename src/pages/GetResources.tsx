@@ -92,6 +92,14 @@ const GetResources = () => {
                 className="w-full min-h-[500px] border-0"
                 title="Email Signup Form"
               />
+              <div className="md:hidden text-center mt-2">
+                <Link
+                  to={isHebrew ? "/he/resources" : "/resources"}
+                  className="text-xs text-primary hover:text-primary/80 underline underline-offset-2"
+                >
+                  Get me to resources
+                </Link>
+              </div>
             </div>
 
           </div>

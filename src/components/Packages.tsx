@@ -45,7 +45,7 @@ const Packages = () => {
                   <li key={b}>{b}</li>
                 ))}
               </ul>
-              <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
+              <Button asChild variant="hero" size="lg" className="w-full sm:w-auto whitespace-normal leading-snug min-h-12 py-3 px-5">
                 <a href="/pay/pitch-deck-review">{t.cta}</a>
               </Button>
             </CardContent>
