@@ -16,8 +16,14 @@ const Hero = () => {
         title2: "לפני ובמהלך הסבב.",
         subtitle:
           "Foundterra עוזרת ליזמי Pre-Seed ו-Seed לבנות מצגת חדה יותר, סיפור משקיעים ברור יותר, הנחות פיננסיות מדויקות יותר ותהליך גיוס ממושמע.",
-        ctaDiagnostic: "התחל עם דיאגנוסטיק ב-$100",
+        ctaDiagnostic: "התחל עם דיאגנוסטיק ב-₪300",
         ctaPlans: "צפה במסלולי המנוי",
+        cardTitle: "תפסיקו לנחש. תתחילו לפגוש משקיעים.",
+        cardLines: [
+          "תראו בדיוק מה מוריד תגובות במצגת שלכם",
+          "קבלו Pitch Deck ו-Data Room ברמת VC",
+          "עברו מפידבק אקראי למערכת גיוס שחוזרת על עצמה",
+        ],
       }
     : {
         badge: "Founder fundraising support",
@@ -27,6 +33,12 @@ const Hero = () => {
           "Foundterra helps pre-seed and seed founders build sharper pitch decks, clearer investor stories, better financial assumptions, and a more disciplined fundraising process.",
         ctaDiagnostic: "Start with $100 Deck Diagnostic",
         ctaPlans: "View Monthly Support",
+        cardTitle: "Stop guessing. Start meeting investors.",
+        cardLines: [
+          "See exactly what is killing replies in your deck",
+          "Get a VC-ready Pitch Deck and Data Room",
+          "Move from random feedback to a repeatable raise system",
+        ],
       };
 
   const handleMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -99,13 +111,9 @@ const Hero = () => {
             <div className="glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(124,58,237,0.20),transparent_38%)]" />
               <div className={`relative z-10 ${isHebrew ? "text-right" : ""}`}>
-                <h3 className="text-2xl sm:text-3xl font-semibold font-serif mb-4">Stop guessing. Start meeting investors.</h3>
+                <h3 className="text-2xl sm:text-3xl font-semibold font-serif mb-4">{t.cardTitle}</h3>
                 <div className="space-y-3">
-                  {[
-                    "See exactly what is killing replies in your deck",
-                    "Get a VC-ready Pitch Deck and Data Room",
-                    "Move from random feedback to a repeatable raise system",
-                  ].map((line) => (
+                  {t.cardLines.map((line) => (
                     <div key={line} className="flex items-start gap-2 border-b border-primary/20 pb-2">
                       <span className="text-primary">•</span>
                       <span className="text-sm text-foreground/90">{line}</span>

@@ -11,14 +11,14 @@ const Process = () => {
         kicker: "ביצוע Done-for-you",
         title: "צריך לבנות את נכסי הגיוס בפועל? נשמור את זה נפרד מהמנוי.",
         subtitle: "מסלולי המנוי מיועדים לפידבק ואדווייזורי. שירותי ביצוע הם פרויקטים סגורים.",
-        mainTitle: "Investor-Ready Pitch Deck",
+        mainTitle: "מצגת משקיעים ברמת Investor-Ready",
         mainText: "כתיבה מחדש ובנייה מלאה של המצגת סביב לוגיקת משקיע, נרטיב, מבנה שקופיות ובהירות.",
-        cta: "Ask About Full Deck",
-        addOn: "Add-on",
+        cta: "דברו איתנו על בנייה מלאה",
+        addOn: "תוספת",
         services: [
-          ["Financial Model", "הנחות משקיע, לוגיקת הכנסות, runway, תרחישים ומבנה מודל."],
-          ["Data Room Preparation", "ארגון חומרי הדיו דיליג'נס הבסיסיים שמשקיעים מצפים לראות."],
-          ["Competitor & Market Analysis", "מיפוי מתחרים, פוזישנינג, לוגיקת שוק ומסגור moat למשקיעים."],
+          ["מודל פיננסי", "הנחות משקיע, לוגיקת הכנסות, runway, תרחישים ומבנה מודל."],
+          ["הכנת Data Room", "ארגון חומרי הדיו דיליג'נס הבסיסיים שמשקיעים מצפים לראות."],
+          ["ניתוח שוק ומתחרים", "מיפוי מתחרים, פוזישנינג, לוגיקת שוק ומסגור moat למשקיעים."],
         ],
       }
     : {
@@ -50,7 +50,7 @@ const Process = () => {
             <CardContent className={`p-8 sm:p-10 ${isHebrew ? "text-right" : ""}`}>
               <h3 className="text-4xl font-bold mb-4 font-serif">{t.mainTitle}</h3>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed font-body">{t.mainText}</p>
-              <p className="text-5xl font-bold gradient-text mb-8">$1,500 <span className="text-base text-muted-foreground">starting price</span></p>
+              <p className="text-5xl font-bold gradient-text mb-8">{isHebrew ? "₪4,500" : "$1,500"} <span className="text-base text-muted-foreground">{isHebrew ? "מחיר התחלתי" : "starting price"}</span></p>
               <Button asChild variant="hero" size="lg">
                 <a href="/pay/pitch-deck-creation">{t.cta}</a>
               </Button>

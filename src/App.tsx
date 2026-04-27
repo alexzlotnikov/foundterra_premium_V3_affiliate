@@ -57,12 +57,18 @@ const AppContent = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/he/resources" element={<Resources />} />
           <Route path="/resources/:slug" element={<ResourceGuide />} />
+          <Route path="/he/resources/:slug" element={<ResourceGuide />} />
           <Route path="/get-resources" element={<GetResources />} />
+          <Route path="/he/get-resources" element={<GetResources />} />
           <Route path="/redirecting" element={<Redirecting />} />
           <Route path="/saas-metric-auditor" element={<SaasMetricAuditor />} />
+          <Route path="/he/saas-metric-auditor" element={<SaasMetricAuditor />} />
           <Route path="/deck-architect" element={<DeckArchitect />} />
+          <Route path="/he/deck-architect" element={<DeckArchitect />} />
           <Route path="/financial-model" element={<FinancialModel />} />
+          <Route path="/he/financial-model" element={<FinancialModel />} />
           <Route path="/investor-ready" element={<InvestorReady />} />
           <Route path="/he/investor-ready" element={<InvestorReady />} />
           <Route path="/paid-consultation" element={<PaidConsultation />} />
@@ -70,7 +76,9 @@ const AppContent = () => {
           <Route path="/market-size" element={<MarketSize />} />
           <Route path="/he/market-size" element={<MarketSize />} />
           <Route path="/pitch-review" element={<PitchReview />} />
+          <Route path="/he/pitch-review" element={<PitchReview />} />
           <Route path="/startup-deals" element={<StartupDeals />} />
+          <Route path="/he/startup-deals" element={<StartupDeals />} />
           <Route path="/pay/:checkoutId" element={<Checkout />} />
           <Route path="/he/pay/:checkoutId" element={<Checkout />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -4,7 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const FinalCTA = () => {
-  const { content } = useLanguage();
+  const { content, language } = useLanguage();
+  const isHebrew = language === "he";
 
   return (
     <section id="final-cta" className="section-padding scroll-mt-24 relative">
@@ -38,7 +39,7 @@ const FinalCTA = () => {
               onClick={() => window.open(content.cta.calendlyLink, '_blank')}
             >
               {content.finalCTA.primaryButton}
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className={`w-5 h-5 ${isHebrew ? "mr-2 rotate-180" : "ml-2"}`} />
             </Button>
             
             <p className="text-sm text-muted-foreground italic font-body">
