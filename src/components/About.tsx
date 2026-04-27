@@ -1,72 +1,68 @@
-import { User, Code, Rocket } from "lucide-react";
-import { useLanguage } from "@/hooks/useLanguage";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+const paths = [
+  {
+    tag: "Diagnose",
+    title: "Pitch Deck Diagnostic",
+    price: "$100",
+    description: "Get detailed deck feedback, a 1-hour consultation, a readiness score, and a recommended next step.",
+    href: "#diagnostic",
+    variant: "hero" as const,
+    cta: "Book Diagnostic",
+  },
+  {
+    tag: "Iterate",
+    title: "Monthly Fundraising Support",
+    price: "$300–$1,000/mo",
+    description: "Get ongoing feedback while preparing, launching, or managing your raise.",
+    href: "#plans",
+    variant: "outline" as const,
+    cta: "View Plans",
+  },
+  {
+    tag: "Build",
+    title: "Done-For-You Services",
+    price: "From $1,500",
+    description: "Need the deck, model, data room, or market analysis built properly? Upgrade to a fixed project.",
+    href: "#services",
+    variant: "outline" as const,
+    cta: "View Services",
+  },
+];
+
 const About = () => {
-  const { content } = useLanguage();
-  
-  const icons = [User, Code, Rocket];
-
-  const qualifications = content.about.qualifications;
-  const isNewFormat = qualifications.length > 0 && typeof qualifications[0] === 'object';
-
   return (
     <section id="about" className="section-padding scroll-mt-24">
       <div className="container-max">
-        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-serif text-foreground">
-            {content.about.title}
+        <div className="text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
+          <p className="text-xs tracking-[0.18em] uppercase text-primary font-semibold mb-4">Choose your path</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-serif">
+            Start where you are in the fundraising process.
           </h2>
-          {content.about.subtitle && (
-            <p className="responsive-text-base text-muted-foreground max-w-3xl mx-auto font-body">
-              {content.about.subtitle}
-            </p>
-          )}
+          <p className="responsive-text-base text-muted-foreground max-w-3xl mx-auto font-body">
+            Foundterra is structured as a simple ladder: start with a diagnostic, subscribe for ongoing support while
+            you raise, or upgrade to done-for-you execution when you need the assets built properly.
+          </p>
         </div>
-        
-        {isNewFormat ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-            {qualifications.map((qual: { title: string; description: string } | string, index: number) => {
-              const IconComponent = icons[index];
-              const item = qual as { title: string; description: string };
-              
-              return (
-                <Card 
-                  key={index} 
-                  className="card-elevated animate-slide-up text-center"
-                  style={{animationDelay: `${index * 0.1}s`}}
-                >
-                  <CardContent className="p-6 sm:p-8">
-                    <div className="w-16 h-16 icon-glow rounded-full flex items-center justify-center mx-auto mb-4">
-                      <IconComponent className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 font-serif">{item.title}</h3>
-                    <p className="text-muted-foreground font-body">{item.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-6 mb-8">
-              {(qualifications as string[]).map((qualification: string, index: number) => (
-                <div key={index} className="flex items-start gap-4 text-lg">
-                  <div className="flex-shrink-0 w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center mt-1">
-                    <span className="text-primary text-xs">✓</span>
-                  </div>
-                  <span className="text-left rtl:text-right text-foreground flex-1 font-body">{qualification}</span>
-                </div>
-              ))}
-            </div>
 
-            {content.about.closing && (
-              <p className="text-xl font-semibold gradient-text text-center font-serif">
-                {content.about.closing}
-              </p>
-            )}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+          {paths.map((path, index) => (
+            <Card key={path.title} className="card-elevated animate-slide-up flex flex-col" style={{ animationDelay: `${index * 0.1}s` }}>
+              <CardContent className="p-6 sm:p-8 flex flex-col h-full">
+                <span className="w-fit px-3 py-1 rounded-full bg-primary/15 text-primary text-xs tracking-wide uppercase font-semibold mb-4">
+                  {path.tag}
+                </span>
+                <h3 className="text-2xl font-bold mb-2 font-serif">{path.title}</h3>
+                <p className="text-xl font-semibold gradient-text mb-4">{path.price}</p>
+                <p className="text-muted-foreground leading-relaxed font-body mb-8">{path.description}</p>
+                <Button asChild variant={path.variant} className="w-full mt-auto">
+                  <a href={path.href}>{path.cta}</a>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
