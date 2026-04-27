@@ -30,7 +30,6 @@ const About = () => {
         ] as const,
       };
 
-const About = () => {
   return (
     <section id="about" className="section-padding scroll-mt-24">
       <div className="container-max">
