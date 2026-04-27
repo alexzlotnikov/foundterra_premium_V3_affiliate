@@ -29,6 +29,7 @@ const Problem = () => {
         ],
       };
 
+const Problem = () => {
   return (
     <section className="section-padding relative">
       <div className="container-max">
