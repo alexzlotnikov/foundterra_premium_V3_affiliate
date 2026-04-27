@@ -40,7 +40,6 @@ const Problem = () => {
   const { language } = useLanguage();
   const isHebrew = language === "he";
 
-  const kicker = isHebrew ? "הבעיה של מייסדים" : "The founder problem";
   const title = isHebrew
     ? "רוב המייסדים המוקדמים לא מקבלים דחייה ברורה. הם נדחים בשקט."
     : "Most early founders are not rejected clearly. They are rejected quietly.";
@@ -53,7 +52,6 @@ const Problem = () => {
     <section className="section-padding relative">
       <div className="container-max">
         <div className="text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
-          <p className="text-xs tracking-[0.18em] uppercase text-primary font-semibold mb-4">{kicker}</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 gradient-text font-serif">{title}</h2>
           <p className="responsive-text-base text-muted-foreground font-body">{subtitle}</p>
         </div>

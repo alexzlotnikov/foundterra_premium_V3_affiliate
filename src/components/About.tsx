@@ -34,7 +34,6 @@ const About = () => {
     <section id="about" className="section-padding scroll-mt-24">
       <div className="container-max">
         <div className="text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
-          <p className="text-xs tracking-[0.18em] uppercase text-primary font-semibold mb-4">{t.kicker}</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-serif">{t.title}</h2>
           <p className="responsive-text-base text-muted-foreground max-w-3xl mx-auto font-body">{t.subtitle}</p>
         </div>
