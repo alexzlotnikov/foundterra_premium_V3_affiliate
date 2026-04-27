@@ -88,7 +88,7 @@ const EntryPoints = () => {
             ctaHref: "/pay/subscription-300",
           },
           {
-            badge: "Main offer",
+            badge: "Most Popular",
             title: "Investor-Ready Support",
             price: "$500",
             description: "For founders starting outreach or already speaking with investors.",
