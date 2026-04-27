@@ -32,9 +32,7 @@ const Packages = () => {
               <ul className="space-y-3 mb-8">
                 <li>Detailed pitch deck feedback</li>
                 <li>1-hour consultation</li>
-                <li>Fundraising readiness score</li>
-                <li>Top 5–10 fixes</li>
-                <li>Recommendation: DIY, subscribe, or rebuild</li>
+                <li>Actionable fixing plan</li>
               </ul>
               <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
                 <a href="/pay/pitch-deck-review">Book $100 Diagnostic</a>

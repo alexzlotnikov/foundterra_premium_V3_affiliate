@@ -8,8 +8,8 @@ import NotFound from "./NotFound";
 type CheckoutConfig = {
   title: string;
   subtitle: string;
-  mode: "subscription" | "one_time";
-  amount?: string;
+  mode: "subscription" | "hosted_button";
+  hostedButtonId?: string;
   planId?: string;
   clientId: string;
 };
@@ -21,8 +21,8 @@ const CHECKOUTS: Record<string, CheckoutConfig> = {
   "pitch-deck-review": {
     title: "Pitch Deck Diagnostic — $100",
     subtitle: "Secure one-time PayPal payment for your pitch deck diagnostic.",
-    mode: "one_time",
-    amount: "100.00",
+    mode: "hosted_button",
+    hostedButtonId: "4Z4FYK6LEB9TQ",
     clientId: ONE_TIME_CLIENT_ID,
   },
   "subscription-300": {
@@ -49,8 +49,8 @@ const CHECKOUTS: Record<string, CheckoutConfig> = {
   "pitch-deck-creation": {
     title: "Investor-Ready Pitch Deck Creation — $1,500",
     subtitle: "Secure one-time PayPal payment for full deck creation.",
-    mode: "one_time",
-    amount: "1500.00",
+    mode: "hosted_button",
+    hostedButtonId: "6EYTHM7EMSBFS",
     clientId: ONE_TIME_CLIENT_ID,
   },
 };
@@ -67,7 +67,7 @@ const Checkout = () => {
     script.src =
       config.mode === "subscription"
         ? `https://www.paypal.com/sdk/js?client-id=${config.clientId}&vault=true&intent=subscription`
-        : `https://www.paypal.com/sdk/js?client-id=${config.clientId}&currency=USD`;
+        : `https://www.paypal.com/sdk/js?client-id=${config.clientId}&components=hosted-buttons&disable-funding=venmo&currency=USD`;
     script.async = true;
     script.dataset.sdkIntegrationSource = "button-factory";
 
@@ -77,34 +77,18 @@ const Checkout = () => {
 
       containerRef.current.innerHTML = "";
 
-      if (config.mode === "subscription") {
-        paypalApi
-          .Buttons({
-            style: { shape: "pill", color: "gold", layout: "vertical", label: "subscribe" },
-            createSubscription: (_data: unknown, actions: any) =>
-              actions.subscription.create({
-                plan_id: config.planId,
-              }),
-          })
-          .render(containerRef.current);
+      if (config.mode === "hosted_button") {
+        paypalApi.HostedButtons({ hostedButtonId: config.hostedButtonId }).render(containerRef.current);
         return;
       }
 
       paypalApi
         .Buttons({
-          style: { shape: "pill", color: "gold", layout: "vertical", label: "paypal" },
-          createOrder: (_data: unknown, actions: any) =>
-            actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    currency_code: "USD",
-                    value: config.amount,
-                  },
-                },
-              ],
+          style: { shape: "pill", color: "gold", layout: "vertical", label: "subscribe" },
+          createSubscription: (_data: unknown, actions: any) =>
+            actions.subscription.create({
+              plan_id: config.planId,
             }),
-          onApprove: (_data: unknown, actions: any) => actions.order.capture(),
         })
         .render(containerRef.current);
     };
