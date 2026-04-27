@@ -63,19 +63,28 @@ const Hero = () => {
             <div className="glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(124,58,237,0.20),transparent_38%)]" />
               <div className="relative z-10">
-                <p className="text-xs uppercase tracking-[0.16em] text-primary/90 mb-2">Readiness snapshot</p>
-                <h3 className="text-2xl sm:text-3xl font-semibold font-serif mb-4">Raise with signal, not noise.</h3>
-                <div className="space-y-3">
+                <p className="text-xs uppercase tracking-[0.16em] text-primary/90 mb-2">Founder momentum trigger</p>
+                <h3 className="text-2xl sm:text-3xl font-semibold font-serif mb-4">Stop guessing. Start moving investors.</h3>
+                <div className="space-y-3 mb-5">
                   {[
-                    ["Deck narrative clarity", "Upgraded weekly"],
-                    ["Investor feedback loops", "Structured"],
-                    ["Fundraising process", "Disciplined"],
-                  ].map(([label, value]) => (
-                    <div key={label} className="flex items-center justify-between border-b border-primary/20 pb-2">
-                      <span className="text-sm text-muted-foreground">{label}</span>
-                      <span className="text-sm text-foreground font-semibold">{value}</span>
+                    "See exactly what is killing replies in your deck",
+                    "Unlock the right monthly support for your stage",
+                    "Move from random feedback to a repeatable raise system",
+                  ].map((line) => (
+                    <div key={line} className="flex items-start gap-2 border-b border-primary/20 pb-2">
+                      <span className="text-primary">•</span>
+                      <span className="text-sm text-foreground/90">{line}</span>
                     </div>
                   ))}
+                </div>
+                <div className="flex items-center gap-3">
+                  <a href="#plans" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                    Explore monthly support ↓
+                  </a>
+                  <span className="text-primary/40">|</span>
+                  <a href="#services" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                    View done-for-you services ↓
+                  </a>
                 </div>
               </div>
             </div>

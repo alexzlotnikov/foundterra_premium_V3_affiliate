@@ -62,22 +62,10 @@ const Header = () => {
           {/* Navigation - Hidden on mobile and small tablets */}
           <nav className={`hidden lg:flex items-center gap-5 xl:gap-7 ${language === 'he' ? 'space-x-reverse' : ''}`} dir={language === 'he' ? 'rtl' : 'ltr'}>
             <button 
-              onClick={() => handleNavigation("/", "packages")} 
-              className="text-muted-foreground hover:text-foreground transition-colors responsive-text-xs whitespace-nowrap px-1 bg-transparent border-none cursor-pointer tracking-[0.06em]"
-            >
-              {content.navigation.packages}
-            </button>
-            <button 
               onClick={() => handleNavigation("/", "services")} 
               className="text-muted-foreground hover:text-foreground transition-colors responsive-text-xs whitespace-nowrap px-1 bg-transparent border-none cursor-pointer tracking-[0.06em]"
             >
               {content.navigation.services}
-            </button>
-            <button 
-              onClick={() => handleNavigation("/", "process")} 
-              className="text-muted-foreground hover:text-foreground transition-colors responsive-text-xs whitespace-nowrap px-1 bg-transparent border-none cursor-pointer tracking-[0.06em]"
-            >
-              {content.navigation.process}
             </button>
             <button 
               onClick={() => handleNavigation("/", "investor-perspective")} 
@@ -149,30 +137,12 @@ const Header = () => {
                   <nav className="flex flex-col space-y-5">
                     <button 
                       onClick={() => {
-                        handleNavigation("/", "packages");
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="text-muted-foreground hover:text-foreground transition-colors responsive-text-base font-medium py-2 px-3 rounded-lg hover:bg-[rgba(99,102,241,0.08)] bg-transparent border-none cursor-pointer text-left w-full"
-                    >
-                      {content.navigation.packages}
-                    </button>
-                    <button 
-                      onClick={() => {
                         handleNavigation("/", "services");
                         setIsMobileMenuOpen(false);
                       }}
                       className="text-muted-foreground hover:text-foreground transition-colors responsive-text-base font-medium py-2 px-3 rounded-lg hover:bg-[rgba(99,102,241,0.08)] bg-transparent border-none cursor-pointer text-left w-full"
                     >
                       {content.navigation.services}
-                    </button>
-                    <button 
-                      onClick={() => {
-                        handleNavigation("/", "process");
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="text-muted-foreground hover:text-foreground transition-colors responsive-text-base font-medium py-2 px-3 rounded-lg hover:bg-[rgba(99,102,241,0.08)] bg-transparent border-none cursor-pointer text-left w-full"
-                    >
-                      {content.navigation.process}
                     </button>
                     <button 
                       onClick={() => {
