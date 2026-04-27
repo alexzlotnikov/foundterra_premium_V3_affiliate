@@ -20,7 +20,7 @@ const FAQ = () => {
       }
     : {
         kicker: "FAQ",
-        title: "Questions founders will ask before paying monthly.",
+        title: "F.A.Q.",
         faqs: [
           ["Should I buy the $100 diagnostic or subscribe?", "Start with the diagnostic if you are unsure what is wrong. Subscribe if you already know you need ongoing support while preparing or raising."],
           ["Do monthly plans include full deck rewriting?", "No. Monthly plans include feedback, review, and advisory support. Full deck rebuilding is a separate service starting at $1,500."],
@@ -35,7 +35,6 @@ const FAQ = () => {
     <section id="faq" className="section-padding scroll-mt-24">
       <div className="container-max">
         <div className="text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
-          <p className="text-xs tracking-[0.18em] uppercase text-primary font-semibold mb-4">{t.kicker}</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 gradient-text font-serif">{t.title}</h2>
         </div>
 

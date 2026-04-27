@@ -39,7 +39,6 @@ const InvestorPerspective = () => {
         <Card className="bg-secondary border-primary/30 max-w-6xl mx-auto">
           <CardContent className="p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className={isHebrew ? "text-right" : ""}>
-              <p className="text-xs tracking-[0.18em] uppercase text-primary font-semibold mb-4">{t.kicker}</p>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-serif text-foreground">{t.title}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed font-body">{t.subtitle}</p>
             </div>

@@ -38,7 +38,6 @@ const Packages = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
           <Card className="card-elevated">
             <CardContent className={`p-8 sm:p-10 ${isHebrew ? "text-right" : ""}`}>
-              <p className="text-xs tracking-[0.18em] uppercase text-primary font-semibold mb-4">{t.kicker}</p>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-serif">{t.title}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6 font-body">{t.subtitle}</p>
               <ul className="space-y-3 mb-8">
