@@ -9,6 +9,8 @@ import { useLanguage } from "@/hooks/useLanguage";
 type CheckoutConfig = {
   title: string;
   subtitle: string;
+  descriptionEn: string;
+  descriptionHe: string;
   mode: "subscription" | "hosted_button";
   hostedButtonId?: string;
   planId?: string;
@@ -34,6 +36,10 @@ const CHECKOUTS: Record<string, CheckoutConfig> = {
   "pitch-deck-review": {
     title: "Pitch Deck Diagnostic — $100",
     subtitle: "Secure one-time PayPal payment for your pitch deck diagnostic.",
+    descriptionEn:
+      "A one-time review for founders who are not sure whether they need small fixes, monthly support, or a full deck rebuild.",
+    descriptionHe:
+      "בדיקה חד-פעמית ליזמים שלא בטוחים אם צריך תיקונים קטנים, מנוי חודשי או בנייה מחדש מלאה.",
     mode: "hosted_button",
     hostedButtonId: "4Z4FYK6LEB9TQ",
     clientId: ONE_TIME_CLIENT_ID,
@@ -41,6 +47,8 @@ const CHECKOUTS: Record<string, CheckoutConfig> = {
   "subscription-300": {
     title: "Fundraising Starter — $300/month",
     subtitle: "Secure PayPal subscription checkout.",
+    descriptionEn: "For founders improving their deck and investor readiness before serious outreach.",
+    descriptionHe: "ליזמים שמשפרים חומרים ומוכנות לפני אאוטריץ' משמעותי.",
     mode: "subscription",
     planId: "P-5VJ08946PJ297241ENHXYISA",
     clientId: SUBSCRIPTION_CLIENT_ID,
@@ -48,6 +56,8 @@ const CHECKOUTS: Record<string, CheckoutConfig> = {
   "subscription-500": {
     title: "Investor-Ready Support — $500/month",
     subtitle: "Secure PayPal subscription checkout.",
+    descriptionEn: "For founders starting outreach or already speaking with investors.",
+    descriptionHe: "ליזמים שכבר התחילו אאוטריץ' או בשיחות עם משקיעים.",
     mode: "subscription",
     planId: "P-2ES992737D663040RNHXYKRY",
     clientId: SUBSCRIPTION_CLIENT_ID,
@@ -55,6 +65,8 @@ const CHECKOUTS: Record<string, CheckoutConfig> = {
   "subscription-1000": {
     title: "Active Raise Partner — $1,000/month",
     subtitle: "Secure PayPal subscription checkout.",
+    descriptionEn: "For founders already taking investor meetings and managing follow-ups.",
+    descriptionHe: "ליזמים שכבר בפגישות פעילות ומנהלים פולואפים.",
     mode: "subscription",
     planId: "P-6DK88186011743254NHXYMCY",
     clientId: SUBSCRIPTION_CLIENT_ID,
@@ -62,6 +74,10 @@ const CHECKOUTS: Record<string, CheckoutConfig> = {
   "pitch-deck-creation": {
     title: "Investor-Ready Pitch Deck Creation — $1,500",
     subtitle: "Secure one-time PayPal payment for full deck creation.",
+    descriptionEn:
+      "Full strategic rewrite and rebuild of your pitch deck, focused on investor logic, narrative, slide structure, clarity, and fundraising readiness.",
+    descriptionHe:
+      "כתיבה מחדש ובנייה מלאה של המצגת סביב לוגיקת משקיע, נרטיב, מבנה שקופיות ובהירות.",
     mode: "hosted_button",
     hostedButtonId: "6EYTHM7EMSBFS",
     clientId: ONE_TIME_CLIENT_ID,
@@ -135,8 +151,29 @@ const Checkout = () => {
       <main className="container-max pt-28 pb-20">
         <section className={`max-w-2xl mx-auto glass-card p-8 sm:p-10 text-center ${isHebrew ? "text-right" : ""}`}>
           <h1 className="text-3xl sm:text-5xl font-serif mb-4">{config.title}</h1>
+          <p className="text-muted-foreground mb-4">
+            {isHebrew ? config.descriptionHe : config.descriptionEn}
+          </p>
           <p className="text-muted-foreground mb-8">{isHebrew ? "תשלום מאובטח דרך PayPal." : config.subtitle}</p>
-          <div ref={containerRef} />
+          <div ref={containerRef} className="mb-8" />
+          <div className="text-sm sm:text-base text-muted-foreground space-y-2">
+            <p>
+              {isHebrew
+                ? "לאחר התשלום תקבלו קישור אישי לקביעת פגישה עם Alex כדי לעבור על הצעדים הבאים."
+                : "After payment, you will receive a dedicated link to book a meeting with Alex and discuss next steps."}
+            </p>
+            <p>
+              {isHebrew
+                ? "בנוסף תקבלו ממנו גם אימייל מעקב."
+                : "You will also receive an email from him."}
+            </p>
+            <p>
+              {isHebrew ? "לשאלות: " : "Questions? Email "}
+              <a href="mailto:info@foundterra.com" className="text-primary underline underline-offset-2">
+                info@foundterra.com
+              </a>
+            </p>
+          </div>
         </section>
       </main>
       <Footer />

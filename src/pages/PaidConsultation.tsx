@@ -78,14 +78,32 @@ const PaidConsultation = () => {
 
             <div id="paypal-container-4Z4FYK6LEB9TQ" ref={paypalContainerRef} className="mb-6" />
 
-            <a
-              href={content.cta.calendlyLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-5 py-3 border border-[rgba(99,102,241,0.35)] text-sm"
-            >
-              {isHebrew ? "קישור גיבוי ליומן" : "Backup calendar link"}
-            </a>
+            <div className="text-sm sm:text-base text-muted-foreground space-y-2">
+              <p>
+                {isHebrew
+                  ? "לאחר התשלום תקבלו קישור אישי לקביעת פגישה עם Alex כדי לעבור על הצעדים הבאים."
+                  : "After payment, you will receive a dedicated link to book a meeting with Alex and discuss next steps."}
+              </p>
+              <p>
+                {isHebrew
+                  ? "בנוסף תקבלו ממנו גם אימייל מעקב."
+                  : "You will also receive an email from him."}
+              </p>
+              <p>
+                {isHebrew ? "לשאלות: " : "Questions? Email "}
+                <a href="mailto:info@foundterra.com" className="text-primary underline underline-offset-2">
+                  info@foundterra.com
+                </a>
+              </p>
+              <a
+                href={content.cta.calendlyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-2 text-primary underline underline-offset-2"
+              >
+                {isHebrew ? "קישור גיבוי ליומן" : "Backup calendar link"}
+              </a>
+            </div>
           </section>
         </main>
         <RelatedServices />
