@@ -22,6 +22,18 @@ const Index = () => {
   const location = useLocation();
   const { language } = useLanguage();
   const isHebrew = language === "he";
+  const websiteUrl = "https://www.foundterra.com";
+  const pageUrl = isHebrew ? `${websiteUrl}/he` : `${websiteUrl}/`;
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Foundterra",
+    url: websiteUrl,
+    logo: `${websiteUrl}/favicon.ico`,
+    sameAs: ["https://www.linkedin.com/company/foundterra"],
+    areaServed: ["US", "IL", "Global"],
+    availableLanguage: ["en", "he"],
+  };
 
   useEffect(() => {
     if (location.hash) {
@@ -47,10 +59,36 @@ const Index = () => {
               : "Foundterra helps founders build investor-ready pitch decks, financial models, and fundraising strategy for pre-seed and seed rounds."
           }
         />
-        <link rel="canonical" href={isHebrew ? "https://www.foundterra.com/he" : "https://www.foundterra.com/"} />
-        <link rel="alternate" hrefLang="en" href="https://www.foundterra.com/" />
-        <link rel="alternate" hrefLang="he" href="https://www.foundterra.com/he" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.foundterra.com/" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Foundterra" />
+        <meta property="og:title" content={isHebrew ? "Foundterra | ליווי גיוס ליזמים" : "Foundterra | Fundraising Advisory for Founders"} />
+        <meta
+          property="og:description"
+          content={
+            isHebrew
+              ? "ליווי גיוס ליזמי Pre-Seed ו-Seed: מצגת, מסרים, מודלים ומוכנות משקיעים."
+              : "Fundraising support for pre-seed and seed founders: pitch decks, investor messaging, models, and raise readiness."
+          }
+        />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:locale" content={isHebrew ? "he_IL" : "en_US"} />
+        <meta property="og:locale:alternate" content={isHebrew ? "en_US" : "he_IL"} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={isHebrew ? "Foundterra | ליווי גיוס ליזמים" : "Foundterra | Fundraising Advisory for Founders"} />
+        <meta
+          name="twitter:description"
+          content={
+            isHebrew
+              ? "ליווי גיוס ממוקד ליזמים בשלבי Pre-Seed ו-Seed."
+              : "Focused fundraising support for pre-seed and seed founders."
+          }
+        />
+        <link rel="canonical" href={pageUrl} />
+        <link rel="alternate" hrefLang="en" href={`${websiteUrl}/`} />
+        <link rel="alternate" hrefLang="he" href={`${websiteUrl}/he`} />
+        <link rel="alternate" hrefLang="x-default" href={`${websiteUrl}/`} />
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
       </Helmet>
       <Header />
       <main>
