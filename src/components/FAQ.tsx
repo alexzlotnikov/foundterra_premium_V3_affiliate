@@ -1,45 +1,57 @@
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { useLanguage } from "@/hooks/useLanguage";
+import { Card, CardContent } from "@/components/ui/card";
+
+const faqs = [
+  {
+    question: "Should I buy the $100 diagnostic or subscribe?",
+    answer:
+      "Start with the diagnostic if you are unsure what is wrong. Subscribe if you already know you need ongoing support while preparing or raising.",
+  },
+  {
+    question: "Do monthly plans include full deck rewriting?",
+    answer:
+      "No. Monthly plans include feedback, review, and advisory support. Full deck rebuilding is a separate service starting at $1,500.",
+  },
+  {
+    question: "How long should founders subscribe?",
+    answer:
+      "Usually 2–4 months: while preparing the materials, launching outreach, handling investor calls, and improving the story from feedback.",
+  },
+  {
+    question: "What does chat support mean?",
+    answer:
+      "Short tactical questions. Long reviews, rewriting, research, financial modeling, and deck building are separate work.",
+  },
+  {
+    question: "Can you help with investor feedback?",
+    answer:
+      "Yes. Send investor notes, rejection emails, or questions they asked. The goal is to understand what the feedback likely means and what to change.",
+  },
+  {
+    question: "Do you guarantee fundraising results?",
+    answer:
+      "No. The service improves fundraising readiness, materials, messaging, and process. It does not guarantee meetings, investment, or term sheets.",
+  },
+];
 
 const FAQ = () => {
-  const { content } = useLanguage();
-  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setExpandedFAQ(expandedFAQ === index ? null : index);
-  };
-
   return (
-    <section className="py-24 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 gradient-text font-serif">{content.faq.title}</h2>
-          <p className="text-lg text-muted-foreground font-body">
-            {content.faq.subtitle}
-          </p>
+    <section id="faq" className="section-padding scroll-mt-24">
+      <div className="container-max">
+        <div className="text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
+          <p className="text-xs tracking-[0.18em] uppercase text-primary font-semibold mb-4">FAQ</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 gradient-text font-serif">
+            Questions founders will ask before paying monthly.
+          </h2>
         </div>
 
-        <div className="space-y-4">
-          {content.faq.questions.map((faq, index) => (
-            <div key={index} className="glass-panel rounded-xl overflow-hidden">
-              <button
-                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-[rgba(99,102,241,0.05)] transition-colors"
-                onClick={() => toggleFAQ(index)}
-              >
-                <h3 className="font-semibold text-lg pr-4 font-serif">{faq.question}</h3>
-                <ChevronDown
-                  className={`w-5 h-5 text-primary transition-transform duration-300 ${
-                    expandedFAQ === index ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {expandedFAQ === index && (
-                <div className="px-6 pb-5 animate-in slide-in-from-top-2 duration-300">
-                  <p className="text-muted-foreground leading-relaxed font-body">{faq.answer}</p>
-                </div>
-              )}
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          {faqs.map((faq, index) => (
+            <Card key={faq.question} className="card-elevated animate-slide-up" style={{ animationDelay: `${index * 0.06}s` }}>
+              <CardContent className="p-6 sm:p-8">
+                <h3 className="text-xl font-bold mb-3 font-serif">{faq.question}</h3>
+                <p className="text-muted-foreground leading-relaxed font-body">{faq.answer}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
