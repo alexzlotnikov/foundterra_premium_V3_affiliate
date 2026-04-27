@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
+import { useLanguage } from "@/hooks/useLanguage";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import Header from "@/components/Header";
@@ -19,6 +20,8 @@ const FinalCTA = lazy(() => import("@/components/FinalCTA"));
 
 const Index = () => {
   const location = useLocation();
+  const { language } = useLanguage();
+  const isHebrew = language === "he";
 
   useEffect(() => {
     if (location.hash) {
@@ -35,11 +38,19 @@ const Index = () => {
       <div className="ambient-orb orb-1" aria-hidden="true" />
       <div className="ambient-orb orb-2" aria-hidden="true" />
       <Helmet>
-        <title>Foundterra | Pitch Deck & Fundraising Advisory for Founders</title>
+        <title>{isHebrew ? "Foundterra | ליווי גיוס, מצגות ומודלים ליזמים" : "Foundterra | Pitch Deck & Fundraising Advisory for Founders"}</title>
         <meta
           name="description"
-          content="Foundterra helps founders build investor-ready pitch decks, financial models, and fundraising strategy for pre-seed and seed rounds."
+          content={
+            isHebrew
+              ? "Foundterra מסייעת ליזמי Pre-Seed ו-Seed לבנות מצגת משקיעים, מסרים ומוכנות גיוס ברמה גבוהה."
+              : "Foundterra helps founders build investor-ready pitch decks, financial models, and fundraising strategy for pre-seed and seed rounds."
+          }
         />
+        <link rel="canonical" href={isHebrew ? "https://www.foundterra.com/he" : "https://www.foundterra.com/"} />
+        <link rel="alternate" hrefLang="en" href="https://www.foundterra.com/" />
+        <link rel="alternate" hrefLang="he" href="https://www.foundterra.com/he" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.foundterra.com/" />
       </Helmet>
       <Header />
       <main>

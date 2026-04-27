@@ -49,6 +49,7 @@ const AppContent = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/he" element={<Index />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
@@ -71,6 +72,7 @@ const AppContent = () => {
           <Route path="/pitch-review" element={<PitchReview />} />
           <Route path="/startup-deals" element={<StartupDeals />} />
           <Route path="/pay/:checkoutId" element={<Checkout />} />
+          <Route path="/he/pay/:checkoutId" element={<Checkout />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

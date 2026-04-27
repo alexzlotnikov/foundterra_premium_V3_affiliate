@@ -378,8 +378,11 @@
 }
 
 @media (max-width: 768px) {
-  .container-max { padding: 0 24px; }
+  .container-max { padding: 0 20px; }
   .section-padding { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+  .hero-gridfx { opacity: 0.18; }
+  .hero-cursor-glow { display: none; }
+  .hero-orbit { display: none; }
 }
 
 .tool-section-highlight {

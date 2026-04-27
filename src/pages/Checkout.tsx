@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NotFound from "./NotFound";
+import { useLanguage } from "@/hooks/useLanguage";
 
 type CheckoutConfig = {
   title: string;
@@ -12,6 +13,18 @@ type CheckoutConfig = {
   hostedButtonId?: string;
   planId?: string;
   clientId: string;
+};
+
+type PayPalActions = {
+  subscription: { create: (options: { plan_id?: string }) => Promise<string> | string };
+};
+
+type PayPalApi = {
+  HostedButtons: (config: { hostedButtonId?: string }) => { render: (target: HTMLElement) => void };
+  Buttons: (config: {
+    style: { shape: string; color: string; layout: string; label: string };
+    createSubscription: (_data: unknown, actions: PayPalActions) => Promise<string> | string;
+  }) => { render: (target: HTMLElement) => void };
 };
 
 const ONE_TIME_CLIENT_ID = "BAALg_f4pdt00DM89Q_Vbdxw5WE6phPXXwGpQRAw2Gb5sWTLKKEjtaD4FfZlOL-loELTtSxRKISWv-b3gY";
@@ -57,11 +70,16 @@ const CHECKOUTS: Record<string, CheckoutConfig> = {
 
 const Checkout = () => {
   const { checkoutId } = useParams();
+  const { language } = useLanguage();
+  const isHebrew = language === "he";
   const containerRef = useRef<HTMLDivElement>(null);
   const config = useMemo(() => (checkoutId ? CHECKOUTS[checkoutId] : undefined), [checkoutId]);
 
   useEffect(() => {
     if (!config || !containerRef.current) return;
+
+    const targetEl = containerRef.current;
+    if (!targetEl) return;
 
     const script = document.createElement("script");
     script.src =
@@ -72,32 +90,32 @@ const Checkout = () => {
     script.dataset.sdkIntegrationSource = "button-factory";
 
     const renderButtons = () => {
-      const paypalApi = (window as Window & { paypal?: any }).paypal;
-      if (!paypalApi || !containerRef.current) return;
+      const paypalApi = (window as Window & { paypal?: PayPalApi }).paypal;
+      if (!paypalApi) return;
 
-      containerRef.current.innerHTML = "";
+      targetEl.innerHTML = "";
 
       if (config.mode === "hosted_button") {
-        paypalApi.HostedButtons({ hostedButtonId: config.hostedButtonId }).render(containerRef.current);
+        paypalApi.HostedButtons({ hostedButtonId: config.hostedButtonId }).render(targetEl);
         return;
       }
 
       paypalApi
         .Buttons({
           style: { shape: "pill", color: "gold", layout: "vertical", label: "subscribe" },
-          createSubscription: (_data: unknown, actions: any) =>
+          createSubscription: (_data: unknown, actions: PayPalActions) =>
             actions.subscription.create({
               plan_id: config.planId,
             }),
         })
-        .render(containerRef.current);
+        .render(targetEl);
     };
 
     script.onload = renderButtons;
     document.body.appendChild(script);
 
     return () => {
-      if (containerRef.current) containerRef.current.innerHTML = "";
+      targetEl.innerHTML = "";
       script.remove();
     };
   }, [config]);
@@ -115,9 +133,9 @@ const Checkout = () => {
 
       <Header />
       <main className="container-max pt-28 pb-20">
-        <section className="max-w-2xl mx-auto glass-card p-8 sm:p-10 text-center">
+        <section className={`max-w-2xl mx-auto glass-card p-8 sm:p-10 text-center ${isHebrew ? "text-right" : ""}`}>
           <h1 className="text-3xl sm:text-5xl font-serif mb-4">{config.title}</h1>
-          <p className="text-muted-foreground mb-8">{config.subtitle}</p>
+          <p className="text-muted-foreground mb-8">{isHebrew ? "תשלום מאובטח דרך PayPal." : config.subtitle}</p>
           <div ref={containerRef} />
         </section>
       </main>
