@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
+import { useLanguage } from "@/hooks/useLanguage";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import Header from "@/components/Header";
@@ -19,6 +20,20 @@ const FinalCTA = lazy(() => import("@/components/FinalCTA"));
 
 const Index = () => {
   const location = useLocation();
+  const { language } = useLanguage();
+  const isHebrew = language === "he";
+  const websiteUrl = "https://www.foundterra.com";
+  const pageUrl = isHebrew ? `${websiteUrl}/he` : `${websiteUrl}/`;
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Foundterra",
+    url: websiteUrl,
+    logo: `${websiteUrl}/favicon.ico`,
+    sameAs: ["https://www.linkedin.com/company/foundterra"],
+    areaServed: ["US", "IL", "Global"],
+    availableLanguage: ["en", "he"],
+  };
 
   useEffect(() => {
     if (location.hash) {
@@ -35,11 +50,45 @@ const Index = () => {
       <div className="ambient-orb orb-1" aria-hidden="true" />
       <div className="ambient-orb orb-2" aria-hidden="true" />
       <Helmet>
-        <title>Foundterra | Pitch Deck & Fundraising Advisory for Founders</title>
+        <title>{isHebrew ? "Foundterra | ליווי גיוס, מצגות ומודלים ליזמים" : "Foundterra | Pitch Deck & Fundraising Advisory for Founders"}</title>
         <meta
           name="description"
-          content="Foundterra helps founders build investor-ready pitch decks, financial models, and fundraising strategy for pre-seed and seed rounds."
+          content={
+            isHebrew
+              ? "Foundterra מסייעת ליזמי Pre-Seed ו-Seed לבנות מצגת משקיעים, מסרים ומוכנות גיוס ברמה גבוהה."
+              : "Foundterra helps founders build investor-ready pitch decks, financial models, and fundraising strategy for pre-seed and seed rounds."
+          }
         />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Foundterra" />
+        <meta property="og:title" content={isHebrew ? "Foundterra | ליווי גיוס ליזמים" : "Foundterra | Fundraising Advisory for Founders"} />
+        <meta
+          property="og:description"
+          content={
+            isHebrew
+              ? "ליווי גיוס ליזמי Pre-Seed ו-Seed: מצגת, מסרים, מודלים ומוכנות משקיעים."
+              : "Fundraising support for pre-seed and seed founders: pitch decks, investor messaging, models, and raise readiness."
+          }
+        />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:locale" content={isHebrew ? "he_IL" : "en_US"} />
+        <meta property="og:locale:alternate" content={isHebrew ? "en_US" : "he_IL"} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={isHebrew ? "Foundterra | ליווי גיוס ליזמים" : "Foundterra | Fundraising Advisory for Founders"} />
+        <meta
+          name="twitter:description"
+          content={
+            isHebrew
+              ? "ליווי גיוס ממוקד ליזמים בשלבי Pre-Seed ו-Seed."
+              : "Focused fundraising support for pre-seed and seed founders."
+          }
+        />
+        <link rel="canonical" href={pageUrl} />
+        <link rel="alternate" hrefLang="en" href={`${websiteUrl}/`} />
+        <link rel="alternate" hrefLang="he" href={`${websiteUrl}/he`} />
+        <link rel="alternate" hrefLang="x-default" href={`${websiteUrl}/`} />
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
       </Helmet>
       <Header />
       <main>
