@@ -1,86 +1,65 @@
-import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
-import { Phone, FolderOpen, PenTool, MessageSquare, CheckCircle, Rocket } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+
+const services = [
+  {
+    title: "Financial Model",
+    description: "Investor-facing assumptions, revenue logic, runway, scenarios, and model structure.",
+  },
+  {
+    title: "Data Room Preparation",
+    description: "Organize the basic diligence materials investors expect before serious conversations.",
+  },
+  {
+    title: "Competitor & Market Analysis",
+    description: "Investor-facing competitor map, positioning, market logic, and moat framing.",
+  },
+];
 
 const Process = () => {
-  const { content, language } = useLanguage();
-  const isRTL = language === 'he';
-
-  const stepIcons = [Phone, FolderOpen, PenTool, MessageSquare, CheckCircle, Rocket];
   return (
-    <section id="process" className="section-padding scroll-mt-24 relative overflow-hidden">
+    <section id="services" className="section-padding scroll-mt-24 relative overflow-hidden">
       <div className="container-max relative z-10">
-        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 gradient-text font-serif">
-            {content.process.title}
+        <div className="mb-12 sm:mb-16 max-w-4xl">
+          <p className="text-xs tracking-[0.18em] uppercase text-primary font-semibold mb-4">Done-for-you execution</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-serif">
+            Need the actual fundraising assets built? Keep this separate from the subscription.
           </h2>
-          {content.process.subtitle && (
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-body">
-              {content.process.subtitle}
-            </p>
-          )}
+          <p className="responsive-text-base text-muted-foreground leading-relaxed font-body">
+            Monthly plans are for review, advisory, and iteration. Execution services are fixed projects for founders
+            who need materials rebuilt or prepared properly.
+          </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            <div className="space-y-6 sm:space-y-8">
-              {content.process.steps.map((step: { number: string; title: string; description: string }, index: number) => {
-                const IconComponent = stepIcons[index] || CheckCircle;
-                
-                return (
-                  <div 
-                    key={step.number} 
-                    className="relative flex gap-4 sm:gap-6 animate-slide-up"
-                    style={{animationDelay: `${index * 0.1}s`}}
-                  >
-
-                    {/* Icon circle */}
-                    <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center relative z-10 icon-glow border border-[rgba(99,102,241,0.3)]">
-                      <IconComponent className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="flex-1 pb-6 sm:pb-8">
-                      <div className="glass-panel rounded-xl p-4 sm:p-6">
-                        <h3 className="text-lg sm:text-xl font-bold mb-2 font-serif">
-                          <span className="font-mono text-primary/70">{step.number}.</span> {step.title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed font-body">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Button */}
-        {content.process.cta && (
-          <div className="text-center mt-12 sm:mt-16 animate-fade-in">
-            <Button 
-              variant="hero" 
-              size="lg"
-              className="px-8 py-6"
-              onClick={() => window.open(content.cta.calendlyLink, '_blank')}
-            >
-              {content.process.cta}
-            </Button>
-          </div>
-        )}
-
-        {/* Result text if exists */}
-        {content.process.result && (
-          <div className="text-center mt-12 sm:mt-16 animate-fade-in">
-            <div className="max-w-4xl mx-auto glass-panel p-6 sm:p-8 rounded-2xl">
-              <p className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text leading-relaxed font-serif">
-                {content.process.result}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-6 sm:gap-8 max-w-6xl mx-auto">
+          <Card className="bg-secondary border-primary/20">
+            <CardContent className="p-8 sm:p-10">
+              <h3 className="text-4xl font-bold mb-4 font-serif">Investor-Ready Pitch Deck</h3>
+              <p className="text-muted-foreground text-lg mb-6 leading-relaxed font-body">
+                Full strategic rewrite and rebuild of your pitch deck, focused on investor logic, narrative, slide
+                structure, clarity, and fundraising readiness.
               </p>
-            </div>
+              <p className="text-5xl font-bold gradient-text mb-8">$1,500 <span className="text-base text-muted-foreground">starting price</span></p>
+              <Button asChild variant="hero" size="lg">
+                <a href="#apply">Ask About Full Deck</a>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <div className="space-y-4">
+            {services.map((service, index) => (
+              <Card key={service.title} className="card-elevated animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardContent className="p-6 flex items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-bold mb-1 font-serif">{service.title}</h3>
+                    <p className="text-muted-foreground font-body">{service.description}</p>
+                  </div>
+                  <span className="text-sm sm:text-base font-semibold text-primary whitespace-nowrap">Add-on</span>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </section>
   );
