@@ -16,6 +16,7 @@ const plans = [
       "Monthly action plan",
     ],
     featured: false,
+    ctaHref: "/pay/subscription-300",
   },
   {
     badge: "Main offer",
@@ -32,6 +33,7 @@ const plans = [
       "Monthly action plan",
     ],
     featured: true,
+    ctaHref: "/pay/subscription-500",
   },
   {
     badge: "Active raise",
@@ -50,6 +52,7 @@ const plans = [
       "Monthly financial model assumptions review",
     ],
     featured: false,
+    ctaHref: "/pay/subscription-1000",
   },
 ];
 
@@ -88,7 +91,7 @@ const EntryPoints = () => {
                   ))}
                 </ul>
                 <Button asChild variant={plan.featured ? "hero" : "outline"} className="w-full mt-auto">
-                  <a href="#apply">Subscribe Now</a>
+                  <a href={plan.ctaHref}>Subscribe Now</a>
                 </Button>
               </CardContent>
             </Card>

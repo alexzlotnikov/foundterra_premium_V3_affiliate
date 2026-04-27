@@ -7,7 +7,7 @@ const paths = [
     title: "Pitch Deck Diagnostic",
     price: "$100",
     description: "Get detailed deck feedback, a 1-hour consultation, a readiness score, and a recommended next step.",
-    href: "#diagnostic",
+    href: "/pay/pitch-deck-review",
     variant: "hero" as const,
     cta: "Book Diagnostic",
   },

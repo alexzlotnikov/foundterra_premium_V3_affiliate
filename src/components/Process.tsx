@@ -41,7 +41,7 @@ const Process = () => {
               </p>
               <p className="text-5xl font-bold gradient-text mb-8">$1,500 <span className="text-base text-muted-foreground">starting price</span></p>
               <Button asChild variant="hero" size="lg">
-                <a href="#apply">Ask About Full Deck</a>
+                <a href="/pay/pitch-deck-creation">Ask About Full Deck</a>
               </Button>
             </CardContent>
           </Card>

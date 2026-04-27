@@ -37,7 +37,7 @@ const Packages = () => {
                 <li>Recommendation: DIY, subscribe, or rebuild</li>
               </ul>
               <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
-                <a href="#apply">Book $100 Diagnostic</a>
+                <a href="/pay/pitch-deck-review">Book $100 Diagnostic</a>
               </Button>
             </CardContent>
           </Card>

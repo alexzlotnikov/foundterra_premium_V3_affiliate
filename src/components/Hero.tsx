@@ -47,7 +47,7 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild variant="hero" size="lg" className="text-base px-8 py-6 group">
-                <a href="#diagnostic">
+                <a href="/pay/pitch-deck-review">
                   Start with $100 Deck Diagnostic
                   <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                 </a>
