@@ -11,9 +11,25 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const getLanguageFromPath = (): Language => {
+  if (typeof window === 'undefined') return 'en';
+  return window.location.pathname.startsWith('/he') ? 'he' : 'en';
+};
+
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(getLanguageFromPath());
   const content = getContentByLanguage(language);
+
+  useEffect(() => {
+    const syncFromPath = () => {
+      const detected = getLanguageFromPath();
+      setLanguage((prev) => (prev === detected ? prev : detected));
+    };
+
+    syncFromPath();
+    window.addEventListener('popstate', syncFromPath);
+    return () => window.removeEventListener('popstate', syncFromPath);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
