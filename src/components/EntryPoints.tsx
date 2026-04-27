@@ -124,7 +124,6 @@ const EntryPoints = () => {
         ],
       };
 
-const EntryPoints = () => {
   return (
     <section id="plans" className="section-padding scroll-mt-24">
       <div className="container-max">
