@@ -41,6 +41,28 @@ interface Resource {
 
 const Resources = () => {
   const { language } = useLanguage();
+  const isHebrew = language === "he";
+  const t = isHebrew
+    ? {
+        metaTitle: "משאבי סטארטאפים - Foundterra",
+        metaDescription: "גישה למשאבי סטארטאפ: מדריכים, תבניות וכלי גיוס מעשיים.",
+        heading: "כל המשאבים שאתם צריכים למסע",
+        headingHighlight: "הסטארטאפ",
+        subtitle: "מדריכים, תבניות ופריימוורקים שיעזרו לכם לבנות, להשיק ולצמוח בצורה חכמה.",
+        ctaLabel: "פתחו משאב",
+        footerText: "צריכים ליווי אישי לסטארטאפ שלכם?",
+        footerButton: "צרו קשר",
+      }
+    : {
+        metaTitle: "Startup Resources - Foundterra",
+        metaDescription: "Access exclusive startup resources including MVP guides, pitch deck templates, and fundraising roadmaps.",
+        heading: "The Only Resources You Need for Your",
+        headingHighlight: "Startup Journey",
+        subtitle: "Curated guides, templates, and frameworks to help you build, launch, and grow your startup successfully.",
+        ctaLabel: "Access Resource",
+        footerText: "Need personalized guidance for your startup?",
+        footerButton: "Get in Touch",
+      };
 
   const resources: Resource[] = [
     {
@@ -159,12 +181,12 @@ const Resources = () => {
   return (
     <>
       <Helmet>
-        <title>Startup Resources - Foundterra</title>
-        <meta name="description" content="Access exclusive startup resources including MVP guides, pitch deck templates, and fundraising roadmaps." />
+        <title>{t.metaTitle}</title>
+        <meta name="description" content={t.metaDescription} />
         <link rel="canonical" href="https://www.foundterra.com/resources" />
       </Helmet>
 
-      <div className="min-h-screen flex flex-col bg-gradient-to-b from-background via-primary/5 to-background">
+      <div className="min-h-screen flex flex-col bg-gradient-to-b from-background via-primary/5 to-background" dir={isHebrew ? "rtl" : "ltr"}>
         <Header />
         
         <main className="flex-1">
@@ -173,11 +195,11 @@ const Resources = () => {
               {/* Header */}
               <div className="text-center mb-16 animate-fade-in">
                 <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                  The Only Resources You Need for Your{" "}
-                  <span className="gradient-text">Startup Journey</span>
+                  {t.heading}{" "}
+                  <span className="gradient-text">{t.headingHighlight}</span>
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  Curated guides, templates, and frameworks to help you build, launch, and grow your startup successfully.
+                  {t.subtitle}
                 </p>
               </div>
 
@@ -212,7 +234,7 @@ const Resources = () => {
                             rel={resource.link.startsWith("/") ? undefined : "noopener noreferrer"}
                             className="flex items-center justify-center gap-2"
                           >
-                            {resource.ctaLabel ?? "Access Resource"}
+                            {resource.ctaLabel ?? t.ctaLabel}
                             <ExternalLink className="w-4 h-4" />
                           </a>
                         </Button>
@@ -225,7 +247,7 @@ const Resources = () => {
               {/* Footer CTA */}
               <div className="text-center mt-16 animate-fade-in">
                 <p className="text-muted-foreground mb-4">
-                  Need personalized guidance for your startup?
+                  {t.footerText}
                 </p>
                 <Button
                   variant="hero"
@@ -233,7 +255,7 @@ const Resources = () => {
                   className="text-lg px-8 py-6"
                   onClick={() => window.open('https://calendly.com/foundterra/30min', '_blank')}
                 >
-                  Get in Touch
+                  {t.footerButton}
                 </Button>
               </div>
             </div>

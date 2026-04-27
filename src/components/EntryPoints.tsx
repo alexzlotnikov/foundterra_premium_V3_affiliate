@@ -11,12 +11,12 @@ const EntryPoints = () => {
         kicker: "תמיכה חודשית",
         title: "גיוס כמעט תמיד נמשך חודשים. התמיכה לא יכולה לעצור אחרי בדיקה אחת.",
         subtitle: "מנוי חודשי תוך כדי הכנה, השקה וניהול הסבב.",
-        subscribe: "Subscribe Now",
+        subscribe: "הצטרפו עכשיו",
         plans: [
           {
-            badge: "Prepare to raise",
+            badge: "מתכוננים לגיוס",
             title: "Fundraising Starter",
-            price: "$300",
+            price: "₪900",
             description: "ליזמים שמשפרים חומרים ומוכנות לפני אאוטריץ' משמעותי.",
             features: [
               "2 סבבי פידבק למצגת בחודש",
@@ -29,9 +29,9 @@ const EntryPoints = () => {
             ctaHref: "/pay/subscription-300",
           },
           {
-            badge: "Main offer",
+            badge: "המסלול המרכזי",
             title: "Investor-Ready Support",
-            price: "$500",
+            price: "₪1,500",
             description: "ליזמים שכבר התחילו אאוטריץ' או בשיחות עם משקיעים.",
             features: [
               "פידבק שבועי למצגת",
@@ -45,9 +45,9 @@ const EntryPoints = () => {
             ctaHref: "/pay/subscription-500",
           },
           {
-            badge: "Active raise",
+            badge: "סבב פעיל",
             title: "Active Raise Partner",
-            price: "$1,000",
+            price: "₪3,000",
             description: "ליזמים שכבר בפגישות פעילות ומנהלים פולואפים.",
             features: [
               "שיחת ייעוץ שבועית של 60 דקות",
@@ -58,7 +58,7 @@ const EntryPoints = () => {
               "אסטרטגיית טרגוט משקיעים",
               "תרגול פיץ' פעמיים בחודש",
               "סקירת מוכנות דאטה רום חודשית",
-              "Monthly investor newsletter update review",
+              "סקירת עדכון משקיעים חודשי",
             ],
             featured: false,
             ctaHref: "/pay/subscription-1000",
@@ -124,7 +124,6 @@ const EntryPoints = () => {
         ],
       };
 
-const EntryPoints = () => {
   return (
     <section id="plans" className="section-padding scroll-mt-24">
       <div className="container-max">
@@ -140,7 +139,7 @@ const EntryPoints = () => {
               <CardContent className={`p-6 sm:p-8 flex flex-col h-full ${isHebrew ? "text-right" : ""}`}>
                 <span className="w-fit px-3 py-1 rounded-full bg-primary/15 text-primary text-xs tracking-wide uppercase font-semibold mb-4">{plan.badge}</span>
                 <h3 className="text-2xl font-bold mb-2 font-serif">{plan.title}</h3>
-                <p className="text-4xl font-bold gradient-text mb-4">{plan.price}<span className="text-base text-muted-foreground">/month</span></p>
+                <p className="text-4xl font-bold gradient-text mb-4">{plan.price}<span className="text-base text-muted-foreground">{isHebrew ? "/חודש" : "/month"}</span></p>
                 <p className="text-muted-foreground mb-5 font-body">{plan.description}</p>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature) => <li key={feature}>{feature}</li>)}

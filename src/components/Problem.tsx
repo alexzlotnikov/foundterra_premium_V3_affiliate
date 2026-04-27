@@ -49,8 +49,6 @@ const Problem = () => {
     : "Investors rarely explain the real problem. Your deck might be unclear. Your traction may not support the story. Your market might feel small. Your outreach may target the wrong funds. Foundterra helps you find and fix the weak points before you waste more investor conversations.";
 
   const items = isHebrew ? HE_ITEMS : EN_ITEMS;
-
-const Problem = () => {
   return (
     <section className="section-padding relative">
       <div className="container-max">

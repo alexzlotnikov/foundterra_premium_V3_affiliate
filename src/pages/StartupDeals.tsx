@@ -12,18 +12,6 @@ const credits = DEALS.filter((d) => d.category === 'credits');
 const partners = DEALS.filter((d) => d.category === 'partner');
 const alternatives = DEALS.filter((d) => d.category === 'alternative');
 
-const advisorReviewDeal: Deal = {
-  id: 'foundterra-advisor-review',
-  company: 'Foundterra',
-  domain: 'foundterra.com',
-  badge: '$100 Review',
-  description: 'Get an investor pitch deck review with clear fixes, priorities, and funding narrative guidance.',
-  link: '/paid-consultation',
-  category: 'alternative',
-  source: 'direct',
-  alternativeTo: 'Advisor',
-};
-
 const copy = {
   en: {
     title: 'Founder savings unlocked: up to $600,000 in startup value',
@@ -33,6 +21,7 @@ const copy = {
     cloudBody: 'Reduce burn with high-impact infrastructure support for serious founders.',
     partnersTitle: 'Premium Tools at Founder Prices',
     partnersBody: 'Curated discounts for product, growth, analytics, and fundraising execution.',
+    strategicTitle: 'Partners',
     altTitle: 'Smart Alternatives That Protect Cash',
     altBody: 'Live AppSumo checks + replacement logic, plus lean alternatives for recurring tools.',
     finalTitle: 'Your stack is ready. Now build the investor story.',
@@ -43,18 +32,19 @@ const copy = {
     bannerCta: 'Get Free Fundraising Kit',
   },
   he: {
-    title: 'חיסכון אמיתי ליזמים: יותר מ-$600,000 בערך לסטארטאפ',
+    title: 'חיסכון אמיתי ליזמים: יותר מ-₪1,800,000 בערך לסטארטאפ',
     subtitle: 'קרדיטים והנחות לכלים פרקטיים שיעזרו לכם להתקדם מהר ולהאריך מסלול.',
     browse: 'צפו בכל הדילים ↓',
-    cloudTitle: 'יותר מ-$760K בקרדיטי ענן',
+    cloudTitle: 'יותר מ-₪2,280,000 בקרדיטי ענן',
     cloudBody: 'הקטינו עלויות תשתית עם הטבות משמעותיות ליזמים בשלבי צמיחה.',
     partnersTitle: 'כלי פרימיום במחירי יזמים',
     partnersBody: 'הנחות נבחרות לכלי מוצר, צמיחה, אנליטיקה והיערכות לגיוס.',
+    strategicTitle: 'שותפים',
     altTitle: 'אלטרנטיבות חכמות ששומרות על התקציב',
     altBody: 'בדיקות AppSumo חיות + החלפות אוטומטיות, יחד עם חלופות רזות לכלים חודשיים.',
     finalTitle: 'הסטאק מוכן. עכשיו בונים סיפור שמשקיעים מממנים.',
     finalBody: 'יש לכם את הכלים. עכשיו צריך נרטיב, מיצוב ואסטרטגיה שמביאים השקעה.',
-    finalCta: 'Book a Strategy Call',
+    finalCta: 'קבעו שיחת אסטרטגיה',
     bannerTitle: 'ערכת גיוס חינמית + כלי Startup',
     bannerBody: 'תבניות, פורמט עדכונים למשקיעים וכלים פרקטיים לשיפור תהליך הגיוס.',
     bannerCta: 'קבלו ערכת גיוס חינמית',
@@ -122,6 +112,19 @@ const StartupDeals = () => {
   const { language, content } = useLanguage();
   const isHebrew = language === 'he';
   const t = copy[isHebrew ? 'he' : 'en'];
+  const advisorReviewDeal: Deal = {
+    id: 'foundterra-advisor-review',
+    company: 'Foundterra',
+    domain: 'foundterra.com',
+    badge: isHebrew ? 'בדיקה ב-₪300' : '$100 Review',
+    description: isHebrew
+      ? 'קבלו בדיקת מצגת משקיעים עם תיקונים ברורים, סדר עדיפויות והכוונה נרטיבית לגיוס.'
+      : 'Get an investor pitch deck review with clear fixes, priorities, and funding narrative guidance.',
+    link: '/paid-consultation',
+    category: 'alternative',
+    source: 'direct',
+    alternativeTo: 'Advisor',
+  };
 
   const middle = Math.ceil(alternatives.length / 2);
   const alternativesWithAdvisor = [...alternatives.slice(0, middle), advisorReviewDeal, ...alternatives.slice(middle)];
@@ -166,7 +169,7 @@ const StartupDeals = () => {
         </section>
 
         <section className={sectionClass}>
-          <h2 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mb-8 text-2xl text-[#EEEEF8] sm:text-3xl">Partners</h2>
+          <h2 style={{ fontFamily: 'var(--font-body)', fontWeight: 800 }} className="mb-8 text-2xl text-[#EEEEF8] sm:text-3xl">{t.strategicTitle}</h2>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {strategicPartners.map((partner) => (
               <a

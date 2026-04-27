@@ -1,5 +1,6 @@
 import { ArrowRight, BarChart3, Briefcase, Calculator, FileSearch, LayoutTemplate, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/hooks/useLanguage";
 
 type FreeStartupToolsProps = {
   className?: string;
@@ -47,6 +48,21 @@ const TOOLS = [
 ];
 
 const FreeStartupTools = ({ className = "", sectionId = "free-startup-tools", highlighted = false }: FreeStartupToolsProps) => {
+  const { language } = useLanguage();
+  const isHebrew = language === "he";
+
+  const t = isHebrew
+    ? {
+        title: "כלים חינמיים לסטארטאפים",
+        subtitle: "השתמשו בכלים החינמיים שלנו כדי לשפר את המצגת, לאמת הנחות ולהתכונן לגיוס.",
+        open: "פתחו כלי",
+      }
+    : {
+        title: "Free Startup Tools",
+        subtitle: "Use our free founder tools to improve your pitch, validate assumptions, and prepare for fundraising.",
+        open: "Open tool",
+      };
+
   return (
     <section
       id={sectionId}
@@ -60,12 +76,12 @@ const FreeStartupTools = ({ className = "", sectionId = "free-startup-tools", hi
               : ""
           }
         >
-          <div className="text-center mb-12">
+          <div className={`text-center mb-12 ${isHebrew ? "text-right" : ""}`}>
             <h2 className="text-4xl md:text-5xl font-bold font-serif">
-              Free <span className="gradient-text">Startup Tools</span>
+              {isHebrew ? <><span className="gradient-text">כלים חינמיים</span> לסטארטאפים</> : <>Free <span className="gradient-text">Startup Tools</span></>}
             </h2>
             <p className="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Use our free founder tools to improve your pitch, validate assumptions, and prepare for fundraising.
+              {t.subtitle}
             </p>
           </div>
 
@@ -81,10 +97,10 @@ const FreeStartupTools = ({ className = "", sectionId = "free-startup-tools", hi
                   <div className="w-11 h-11 rounded-lg icon-glow flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{tool.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{tool.description}</p>
+                  <h3 className={`text-lg font-semibold mb-2 ${isHebrew ? "text-right" : ""}`}>{tool.title}</h3>
+                  <p className={`text-sm text-muted-foreground mb-4 ${isHebrew ? "text-right" : ""}`}>{tool.description}</p>
                   <span className="inline-flex items-center text-sm font-medium text-primary">
-                    Open tool <ArrowRight className="w-4 h-4 ml-1" />
+                    {t.open} <ArrowRight className={`w-4 h-4 ${isHebrew ? "mr-1 rotate-180" : "ml-1"}`} />
                   </span>
                 </Link>
               );

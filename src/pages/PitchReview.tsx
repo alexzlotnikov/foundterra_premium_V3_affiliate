@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RelatedServices from "@/components/RelatedServices";
+import { useLanguage } from "@/hooks/useLanguage";
 
 type ReviewState = "idle" | "processing" | "results";
 type SourceType = "pdf" | "pptx";
@@ -239,6 +240,42 @@ const scoreFromFile = (file: File): ReviewResult => {
 };
 
 const PitchReview = () => {
+  const { language } = useLanguage();
+  const isHebrew = language === "he";
+  const t = isHebrew
+    ? {
+        title: "בדיקת Pitch Deck חינמית — ציון מוכנות ל-VC | Foundterra",
+        description: "העלו את מצגת הסטארטאפ וקבלו ציון מוכנות ל-VC עם המלצות פרקטיות.",
+        h1: "בדיקת Pitch Deck חינמית",
+        subtitle: "העלו את המצגת וקבלו בדיקה אוטומטית עם ציון מוכנות ל-VC, בדיקות נרטיב ותיקונים פרקטיים. העיבוד מתבצע בדפדפן לשמירה על פרטיות.",
+        dropTitle: "גררו לכאן את המצגת",
+        dropSub: "PDF או PowerPoint (.pptx) · עד 50MB · ניתוח מיידי",
+        privacy: "✓ העיבוד כולו בדפדפן — המצגת לא עוזבת את המכשיר שלכם.",
+        processing: "הניתוח החכם בתהליך",
+        analyzed: "נותח:",
+        detailed: "דירוג פרמטרים מפורט",
+        detailedSub: "כל תחום מדורג מתוך 10 עם הסבר ופעולה לשיפור.",
+        improve: "שיפור:",
+        strengths: "חוזקות מובילות",
+        fixes: "תיקונים בעדיפות גבוהה לפני פנייה למשקיעים",
+      }
+    : {
+        title: "Free Pitch Deck Review — VC Readiness Score | Foundterra",
+        description: "Upload your startup pitch deck and get an instant automated VC readiness score with practical recommendations.",
+        h1: "Free Pitch Deck Review",
+        subtitle: "Upload your deck and get an instant automated review with a VC Readiness score, narrative checks, and practical fixes. Processed in your browser for privacy.",
+        dropTitle: "Drop your pitch deck here",
+        dropSub: "PDF or PowerPoint (.pptx) · Up to 50MB · Analyzed instantly",
+        privacy: "✓ Processed entirely in your browser — your deck never leaves your device.",
+        processing: "Intelligent analysis in progress",
+        analyzed: "Analyzed:",
+        detailed: "Detailed parameter scoring",
+        detailedSub: "Each area is scored out of 10 with an explanation and an action to improve.",
+        improve: "Improve:",
+        strengths: "Top strengths",
+        fixes: "Priority fixes before investor outreach",
+      };
+
   const [fileName, setFileName] = useState("");
   const [error, setError] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
@@ -282,13 +319,10 @@ const PitchReview = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground" dir={isHebrew ? "rtl" : "ltr"}>
       <Helmet>
-        <title>Free Pitch Deck Review — VC Readiness Score | Foundterra</title>
-        <meta
-          name="description"
-          content="Upload your startup pitch deck and get an instant automated VC readiness score with practical recommendations."
-        />
+        <title>{t.title}</title>
+        <meta name="description" content={t.description} />
         <link rel="canonical" href="https://www.foundterra.com/pitch-review" />
       </Helmet>
 
@@ -297,18 +331,17 @@ const PitchReview = () => {
       <main className="pt-28 pb-20">
         <section className="container-max px-4 mb-10">
           <h1 className="text-3xl md:text-5xl font-serif font-semibold leading-tight">
-            Free Pitch Deck Review
+            {t.h1}
           </h1>
           <p className="text-muted-foreground mt-4 max-w-3xl">
-            Upload your deck and get an instant automated review with a VC Readiness score, narrative checks, and practical fixes.
-            Processed in your browser for privacy.
+            {t.subtitle}
           </p>
         </section>
 
         <section className="container-max px-4">
           <div className="border border-[rgba(123,82,245,0.35)] bg-[rgba(123,82,245,0.08)] p-6 md:p-8">
-            <h2 className="text-xl font-semibold mb-2">Drop your pitch deck here</h2>
-            <p className="text-sm text-muted-foreground mb-4">PDF or PowerPoint (.pptx) · Up to 50MB · Analyzed instantly</p>
+            <h2 className="text-xl font-semibold mb-2">{t.dropTitle}</h2>
+            <p className="text-sm text-muted-foreground mb-4">{t.dropSub}</p>
             <input
               type="file"
               accept=".pdf,.pptx,.ppt"
@@ -318,7 +351,7 @@ const PitchReview = () => {
               }}
               className="mb-3 block text-sm"
             />
-            <p className="text-sm text-emerald-300">✓ Processed entirely in your browser — your deck never leaves your device.</p>
+            <p className="text-sm text-emerald-300">{t.privacy}</p>
             {error && <p className="text-rose-300 mt-3 text-sm">{error}</p>}
           </div>
         </section>
@@ -326,7 +359,7 @@ const PitchReview = () => {
         {isProcessing && (
           <section className="container-max px-4 mt-8">
             <div className="border border-border bg-card p-6 md:p-8">
-              <p className="text-xs uppercase tracking-[0.14em] text-[var(--purple-light)]">Intelligent analysis in progress</p>
+              <p className="text-xs uppercase tracking-[0.14em] text-[var(--purple-light)]">{t.processing}</p>
               <p className="text-lg mt-2">{PROCESSING_MESSAGES[messageIndex]}</p>
               <div className="mt-6 h-2 bg-muted overflow-hidden">
                 <div className="h-full bg-[var(--purple-light)] animate-pulse" style={{ width: "100%" }} />
@@ -338,15 +371,15 @@ const PitchReview = () => {
         {result && tier && (
           <section className="container-max px-4 mt-8 space-y-6">
             <div className="border border-border bg-card p-6 md:p-8">
-              <p className="text-sm text-muted-foreground">Analyzed: {fileName} · {result.slides} slides</p>
+              <p className="text-sm text-muted-foreground">{t.analyzed} {fileName} · {result.slides} slides</p>
               <p className="text-5xl md:text-6xl font-semibold mt-3">{result.score.toFixed(1)} / 100</p>
               <p className={`mt-2 text-sm font-medium ${tier.color}`}>{tier.label}</p>
               <p className="mt-4 text-muted-foreground max-w-2xl">{result.summary}</p>
             </div>
 
             <div className="border border-border bg-card p-6 md:p-8">
-              <h3 className="text-xl font-semibold">Detailed parameter scoring</h3>
-              <p className="text-sm text-muted-foreground mt-2">Each area is scored out of 10 with an explanation and an action to improve.</p>
+              <h3 className="text-xl font-semibold">{t.detailed}</h3>
+              <p className="text-sm text-muted-foreground mt-2">{t.detailedSub}</p>
               <div className="mt-6 space-y-4">
                 {result.dimensions.map((dimension) => (
                   <div key={dimension.key} className="border border-border/70 p-4 bg-background/40">
@@ -363,7 +396,7 @@ const PitchReview = () => {
                       />
                     </div>
                     <p className="text-sm mt-3 text-muted-foreground">{dimension.explanation}</p>
-                    <p className="text-sm mt-2 text-emerald-300">Improve: {dimension.improvement}</p>
+                    <p className="text-sm mt-2 text-emerald-300">{t.improve} {dimension.improvement}</p>
                   </div>
                 ))}
               </div>
@@ -371,7 +404,7 @@ const PitchReview = () => {
 
             <div className="grid gap-6 md:grid-cols-2">
               <div className="border border-border bg-card p-6 md:p-8">
-                <h3 className="text-lg font-semibold">Top strengths</h3>
+                <h3 className="text-lg font-semibold">{t.strengths}</h3>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                   {result.strengths.map((strength) => (
                     <li key={strength}>• {strength}</li>
@@ -380,7 +413,7 @@ const PitchReview = () => {
               </div>
 
               <div className="border border-border bg-card p-6 md:p-8">
-                <h3 className="text-lg font-semibold">Priority fixes before investor outreach</h3>
+                <h3 className="text-lg font-semibold">{t.fixes}</h3>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                   {result.nextSteps.map((step) => (
                     <li key={step}>• {step}</li>
