@@ -58,6 +58,32 @@ const Packages = () => {
         ],
       };
 
+  const t = isHebrew
+    ? {
+        kicker: "הצעד בתשלום המומלץ ראשון",
+        title: "Pitch Deck Diagnostic",
+        subtitle: "בדיקה חד-פעמית ליזמים שלא בטוחים אם צריך תיקונים קטנים, מנוי חודשי או בנייה מחדש מלאה.",
+        bullets: ["פידבק מפורט על המצגת", "שיחת ייעוץ של שעה", "Actionable fixing plan"],
+        cta: "Book $100 Diagnostic",
+        cards: [
+          ["מה חלש עכשיו?", "אבחון ברור של הבעיות המרכזיות מול משקיעים במצגת הנוכחית שלך."],
+          ["מה לתקן קודם?", "יוצאים עם רשימת תיקונים מסודרת ומדורגת במקום הערות אקראיות."],
+          ["מה הצעד הבא הנכון?", "להבין אם להמשיך לבד, להצטרף למנוי תמיכה, או לבנות מחדש."],
+        ],
+      }
+    : {
+        kicker: "Best first paid step",
+        title: "Pitch Deck Diagnostic",
+        subtitle: "A one-time review for founders who are not sure whether they need small fixes, monthly support, or a full deck rebuild.",
+        bullets: ["Detailed pitch deck feedback", "1-hour consultation", "Actionable fixing plan"],
+        cta: "Book $100 Diagnostic",
+        cards: [
+          ["What is weak right now?", "Get a clear diagnosis of the biggest investor-facing problems in your current deck."],
+          ["What should you fix first?", "Leave with a prioritized list of changes instead of random comments from different advisors."],
+          ["What is the right next step?", "Know whether you should keep improving alone, subscribe for support, or rebuild the deck properly."],
+        ],
+      };
+
 const Packages = () => {
   return (
     <section id="diagnostic" className="section-padding scroll-mt-24">
