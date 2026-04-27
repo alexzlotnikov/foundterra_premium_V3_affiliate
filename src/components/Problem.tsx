@@ -50,6 +50,7 @@ const Problem = () => {
 
   const items = isHebrew ? HE_ITEMS : EN_ITEMS;
 
+const Problem = () => {
   return (
     <section className="section-padding relative">
       <div className="container-max">
